@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.DBFillingController">
+   <children>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+        <items>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <left>
+                  <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                    <tabs>
+            
+                      <Tab text="Количество классов">
+                           <content>
+                              <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                                <items>
+                                    <Label text="Выберите количество классов:" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                                      <tabs>
+                                        <Tab text="5 классы:">
+                                             <content>
+                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label fx:id="labelForTest" layoutX="77.0" layoutY="54.0" text="Label" />
+                                                   </children></AnchorPane>
+                                             </content>
+                                          </Tab>
+                                        <Tab text="6 классы:">
+                                             <content>
+                                                <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                             </content>
+                                          </Tab>
+                                          <Tab text="7 классы:">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                            </content>
+                                          </Tab>
+                                          <Tab text="8 классы:">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                            </content>
+                                          </Tab>
+                                          <Tab text="9 классы:">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                            </content>
+                                          </Tab>
+                                          <Tab text="10 классы:">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                            </content>
+                                          </Tab>
+                                          <Tab text="11 классы:">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                            </content>
+                                          </Tab>
+                                      </tabs>
+                                    </TabPane>
+                                </items>
+                              </SplitPane>
+                           </content>
+                        </Tab>
+            
+                      <Tab text="Предметы для классов">
+                           <content>
+                              <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+                                <items>
+                                    <SplitPane dividerPositions="0.06304728546409807" maxWidth="-Infinity" orientation="VERTICAL" prefHeight="571.0" prefWidth="200.0">
+                                      <items>
+                                          <Label text="Классы:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView fx:id="groupList" editable="true" prefHeight="550.0" prefWidth="200.0" />
+                                      </items>
+                                    </SplitPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <TableView fx:id="tableViewSubjects" focusTraversable="false" prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                                            <columns>
+                                              <TableColumn prefWidth="100.0" text="Предметы:" />
+                                              <TableColumn prefWidth="75.0" text="Часы в неделю:" />
+                                            </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </content>
+                        </Tab>
+            
+                      <Tab text="Преподаватели">
+                           <content>
+                              <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0">
+                                <items>
+                                    <SplitPane dividerPositions="0.06304728546409807" maxWidth="-Infinity" orientation="VERTICAL" prefHeight="571.0" prefWidth="200.0">
+                                       <items>
+                                          <Label text="Предметы:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView prefHeight="200.0" prefWidth="200.0" />
+                                       </items>
+                                    </SplitPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <TableView focusTraversable="false" prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                                             <columns>
+                                                <TableColumn prefWidth="100.0" text="ФИО преподавателя:" />
+                                                <TableColumn prefWidth="75.0" text="Часы в неделю:" />
+                                                <TableColumn prefWidth="75.0" text="Аудитория:" />
+                                             </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </content>
+                        </Tab>
+            
+                    </tabs>
+                  </TabPane>
+               </left>
+            </BorderPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Button mnemonicParsing="false" prefWidth="150.0" text="Сохранить" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="650.0" AnchorPane.topAnchor="0.0" />
+                  <Button mnemonicParsing="false" prefWidth="150.0" text="Перейти к расписанию" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</StackPane>
