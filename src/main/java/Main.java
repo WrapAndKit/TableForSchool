@@ -31,6 +31,8 @@ public class Main extends Application {
 
     public static ObservableList<String> wordsList;
 
+    public static ObservableList<String> list;
+
     public static ObservableList<Book> books = FXCollections.observableArrayList();
 
     public static ObservableList<Subject> subjects = FXCollections.observableArrayList();
@@ -49,11 +51,12 @@ public class Main extends Application {
             });
         });
 
+        list = controller.queryColumnValue("Классы","Класс");
         wordsList = controller.queryColumnValue("Предметы","Класс");
         ObservableList<ObservableList> rows = controller.queryRows("Предметы");
         wordsList.forEach(value -> {
             rows.forEach(row -> {
-                if(row.get(0).equals(value))subjects.add(new Subject(row.get(1),row.get(2)));
+                if(row.get(0).equals(value) && row.get(1)!= null && row.get(2)!= null)subjects.add(new Subject(row.get(1).toString(),row.get(2).toString()));
                 System.out.println("" + row.get(2) + row.get(1));
             });
             tableView = new TableView<Subject>(subjects);
