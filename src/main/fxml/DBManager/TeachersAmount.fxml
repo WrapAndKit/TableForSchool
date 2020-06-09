@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TitledPane animated="false" collapsible="false" prefHeight="236.0" prefWidth="383.0" text="Введите количество допустимое преподавателей" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TitledPane animated="false" collapsible="false" prefHeight="236.0" prefWidth="383.0" text="Введите допустимое количество преподавателей" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <GridPane>
         <columnConstraints>
