@@ -4,28 +4,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-           prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
-           xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.DBManager.DBManagerController">
-    <AnchorPane SplitPane.resizableWithParent="false">
-        <Accordion maxHeight="-Infinity" prefHeight="195.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                   AnchorPane.topAnchor="0.0">
+<SplitPane dividerPositions="0.3" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.DBManager.DBManagerController">
+    <AnchorPane>
+        <Accordion maxHeight="-Infinity" prefHeight="195.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <panes>
                 <TitledPane animated="false" text="Четверть">
-                    <ListView fx:id="weeks" onMouseClicked="#handleMouseClickWeeks"/>
+                    <ListView fx:id="weeks" onMouseClicked="#handleMouseClickWeeks" />
                 </TitledPane>
                 <TitledPane animated="false" text="Классы">
-                    <ListView fx:id="grades" onMouseClicked="#handleMouseClickGrades"/>
+                    <ListView fx:id="grades" onMouseClicked="#handleMouseClickGrades" />
                 </TitledPane>
                 <TitledPane animated="false" text="Предметы">
-                    <ListView fx:id="subjects" onMouseClicked="#handleMouseClickSubjects"/>
+                    <ListView fx:id="subjects" onMouseClicked="#handleMouseClickSubjects" />
                 </TitledPane>
                 <TitledPane animated="false" text="Преподаватели">
-                    <ListView fx:id="teachers" onMouseClicked="#handleMouseClickTeachers"/>
+                    <ListView fx:id="teachers" onMouseClicked="#handleMouseClickTeachers" />
                 </TitledPane>
             </panes>
             <padding>
-                <Insets left="5.0" right="5.0" top="10.0"/>
+                <Insets left="5.0" right="5.0" top="10.0" />
             </padding>
         </Accordion>
     </AnchorPane>
