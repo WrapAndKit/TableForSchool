@@ -1,8 +1,6 @@
 package packageForStruct;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,23 +9,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 import packageForStruct.controllers.*;
-import packageForStruct.workClasses.Group;
 
 public class Main extends Application {
 
-    private final SQLiteC controller = new SQLiteC();
-
     private static Stage primaryStage;
-
-    public static ObservableList<String> list;
-
-    public static ObservableList<String> listOfSubjects;
-
-    public static ObservableList<Group> groups= FXCollections.observableArrayList();
 
     public void showDBFillingWindow(){
         try{
@@ -128,34 +115,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage){
         Main.primaryStage = primaryStage;
-        controller.connect();
-        List<String> tableNames = controller.queryTables();
-        tableNames.forEach(tableName ->{
-            System.out.println(tableName);
-            Map<String, String> columns = controller.queryColumns(tableName);
-            columns.forEach((name, type) -> System.out.println("Column " + name + " has type - " + type));
-            ObservableList<ObservableList> rows = controller.queryRows(tableName);
-            rows.forEach(row -> {
-                row.forEach(System.out::println);
-            });
-        });
-
-        list = controller.queryColumnValue("Классы","Класс");
-        listOfSubjects = controller.queryColumnValue("Предметы", "Предмет");
-        ObservableList<String> result = FXCollections.observableArrayList();
-        listOfSubjects.forEach(subject -> {
-            if(!result.contains(subject)) result.add(subject);
-        });
-        listOfSubjects = result;
-
-        ObservableList<ObservableList> groupRows = controller.queryRows("Классы");
-        groupRows.forEach(row -> groups.add(new Group(Integer.parseInt(row.get(0).toString()), Integer.parseInt(row.get(1).toString()))));
-
-        controller.disconnect();
-
         showDBFillingWindow();
     }
-
 
     public static void main(String[] args) {
         launch(args);

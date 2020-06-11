@@ -4,23 +4,28 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 public class DeleteTeacherС {
-    public void setDeleteDialogStage(Stage deleteDialogStage) {
-        this.deleteDialogStage = deleteDialogStage;
-    }
 
     private Stage deleteDialogStage;
-
     private int id;
+    private DBFillingC parent;
 
     public void setId(int id) {
         this.id = id;
     }
-
     public void setParent(DBFillingC parent) {
         this.parent = parent;
     }
+    public void setDeleteDialogStage(Stage deleteDialogStage) {
+        this.deleteDialogStage = deleteDialogStage;
+    }
 
-    private DBFillingC parent;
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                                  События                                         |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
 
     @FXML
     private void delete(){
@@ -29,6 +34,7 @@ public class DeleteTeacherС {
         SQLiteC.deleteRow("Преподаватели", "id",id);
         SQLiteC.disconnect();
         deleteDialogStage.close();
+        parent.listUpdate();
         parent.updateTVFromSubject();
     }
     @FXML

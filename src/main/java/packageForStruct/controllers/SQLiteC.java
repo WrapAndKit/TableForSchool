@@ -1,6 +1,5 @@
 package packageForStruct.controllers;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -13,8 +12,6 @@ import java.util.Map;
 public class SQLiteC {
 
     private Connection connection;
-
-    public Connection getConnection() {return connection;}
 
     public void connect(){
         Connection connection = null;
@@ -119,9 +116,9 @@ public class SQLiteC {
     }
 
     public void addRow(String tableName, Object ... value){
-        String statementHelper = "";
+        StringBuilder statementHelper = new StringBuilder();
         for (int i = 0; i < value.length; i++) {
-            statementHelper += (i != value.length-1) ? "?, ":"?";
+            statementHelper.append((i != value.length - 1) ? "?, " : "?");
         }
         String statement = "INSERT INTO " +  tableName +
                 " VALUES (" + statementHelper + ")";
@@ -152,6 +149,5 @@ public class SQLiteC {
     public void disconnect(){
         this.connection = null;
     }
-
 
 }

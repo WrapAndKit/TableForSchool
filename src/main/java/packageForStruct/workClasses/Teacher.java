@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Teacher {
+
     private StringProperty name;
     private StringProperty load;
     private StringProperty classroom;
@@ -23,39 +24,13 @@ public class Teacher {
     public String toString(){
         return "Teacher's name is " + name.getValue() + " he/she has " + load.getValue() + " hours load in " + classroom.getValue() + " classroom!";
     }
+
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
+    public String getLoad() { return load.get(); }
 
-    public void setName(String name) {
-        this.name.set(name);
-    }
+    public String getClassroom() { return classroom.get(); }
 
-    public String getLoad() {
-        return load.get();
-    }
-
-    public StringProperty loadProperty() {
-        return load;
-    }
-
-    public void setLoad(String load) {
-        this.load.set(load);
-    }
-
-    public String getClassroom() {
-        return classroom.get();
-    }
-
-    public StringProperty classroomProperty() {
-        return classroom;
-    }
-
-    public void setClassroom(String classroom) {
-        this.classroom.set(classroom);
-    }
 }

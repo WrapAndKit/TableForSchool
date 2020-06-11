@@ -20,11 +20,7 @@ public class Subject {
 
     public String getName(){ return name.get();}
 
-    public void setName(String value){name.set(value);}
-
     public String getLoad(){ return load.get();}
-
-    public void setLoad(String value){ load.set(value);}
 
     public String toString(){
         return "Name: " + name.getValue() + ", load: " + load.getValue();

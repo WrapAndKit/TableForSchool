@@ -13,14 +13,26 @@ import java.util.ResourceBundle;
 public class AddTeacherC implements Initializable {
 
     private Stage addDialogStage;
-
     private DBFillingC parent;
-
     private Object selectedItem;
+
+    public void setSelectedItem(Object selectedItem) {
+        this.selectedItem = selectedItem;
+    }
+    public void setAddDialogStage(Stage addDialogStage) { this.addDialogStage = addDialogStage; }
+    public void setParent(DBFillingC parent) { this.parent = parent; }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
+
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                                  События                                         |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
 
     @FXML
     public void ok(){
@@ -40,28 +52,26 @@ public class AddTeacherC implements Initializable {
                             selectedItem, classroom.getText(),load.getText());
                     SQLiteC.disconnect();
                     addDialogStage.close();
+                    parent.listUpdate();
                     parent.updateTVFromSubject();
             }
     }
-
-    @FXML
-    private TextField name;
-
-    @FXML
-    private TextField load;
-
-    @FXML
-    private TextField classroom;
-
     @FXML
     public void cancel(){ addDialogStage.close();}
 
-    public void setSelectedItem(Object selectedItem) {
-        this.selectedItem = selectedItem;
-    }
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                            Объявляем объекты FXML                                |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
 
-    public void setAddDialogStage(Stage addDialogStage) { this.addDialogStage = addDialogStage; }
-
-    public void setParent(DBFillingC parent) { this.parent = parent; }
+    @FXML
+    private TextField name;
+    @FXML
+    private TextField load;
+    @FXML
+    private TextField classroom;
 
 }

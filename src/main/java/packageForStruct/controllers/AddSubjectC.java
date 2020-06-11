@@ -13,28 +13,29 @@ import java.util.ResourceBundle;
 public class AddSubjectC implements Initializable{
 
     private Stage addDialogStage;
+    private Object selectedItem;
+    private DBFillingC parent;
 
     public void setParent(DBFillingC parent) {
         this.parent = parent;
     }
-
-    private DBFillingC parent;
-
     public void setSelectedItem(Object selectedItem) {
         this.selectedItem = selectedItem;
     }
-
-    private Object selectedItem;
-
-    @FXML
-    private TextField name;
-
-    @FXML
-    private TextField load;
+    public void setAddDialogStage(Stage addDialogStage) {
+        this.addDialogStage = addDialogStage;
+    }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
+
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                                  События                                         |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
 
     @FXML
     private void ok(){
@@ -53,17 +54,25 @@ public class AddSubjectC implements Initializable{
                         load.getText(), Integer.parseInt(ids.get(0).toString())+1);
                 SQLiteC.disconnect();
                 addDialogStage.close();
+                parent.listUpdate();
                 parent.updateTVFromGroup();
             }
     }
-
     @FXML
     private void cancel(){
         addDialogStage.close();
     }
 
-    public void setAddDialogStage(Stage addDialogStage) {
-        this.addDialogStage = addDialogStage;
-    }
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                            Объявляем объекты FXML                                |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
 
+    @FXML
+    private TextField name;
+    @FXML
+    private TextField load;
 }

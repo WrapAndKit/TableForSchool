@@ -10,112 +10,30 @@ import packageForStruct.Main;
 import packageForStruct.workClasses.Subject;
 import packageForStruct.workClasses.Group;
 import packageForStruct.workClasses.Teacher;
+import packageForStruct.workClasses.Variables;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DBFillingC implements Initializable {
 
-    //
-    @FXML
-    private RadioButton Radio5A;
-    @FXML
-    private RadioButton Radio5AB;
-    @FXML
-    private RadioButton Radio5ABV;
-    @FXML
-    private RadioButton Radio5ABVG;
-    @FXML
-    private RadioButton Radio5ABVGD;
-    //
-
-    @FXML
-    private RadioButton Radio6A;
-    @FXML
-    private RadioButton Radio6AB;
-    @FXML
-    private RadioButton Radio6ABV;
-    @FXML
-    private RadioButton Radio6ABVG;
-    @FXML
-    private RadioButton Radio6ABVGD;
-
-    @FXML
-    private RadioButton Radio7A;
-    @FXML
-    private RadioButton Radio7AB;
-    @FXML
-    private RadioButton Radio7ABV;
-    @FXML
-    private RadioButton Radio7ABVG;
-    @FXML
-    private RadioButton Radio7ABVGD;
-
-    @FXML
-    private RadioButton Radio8A;
-    @FXML
-    private RadioButton Radio8AB;
-    @FXML
-    private RadioButton Radio8ABV;
-    @FXML
-    private RadioButton Radio8ABVG;
-    @FXML
-    private RadioButton Radio8ABVGD;
-
-    @FXML
-    private RadioButton Radio9A;
-    @FXML
-    private RadioButton Radio9AB;
-    @FXML
-    private RadioButton Radio9ABV;
-    @FXML
-    private RadioButton Radio9ABVG;
-    @FXML
-    private RadioButton Radio9ABVGD;
-
-    @FXML
-    private RadioButton Radio10A;
-    @FXML
-    private RadioButton Radio10AB;
-    @FXML
-    private RadioButton Radio10ABV;
-    @FXML
-    private RadioButton Radio10ABVG;
-    @FXML
-    private RadioButton Radio10ABVGD;
-
-    @FXML
-    private RadioButton Radio11A;
-    @FXML
-    private RadioButton Radio11AB;
-    @FXML
-    private RadioButton Radio11ABV;
-    @FXML
-    private RadioButton Radio11ABVG;
-    @FXML
-    private RadioButton Radio11ABVGD;
-
-    @FXML
-    private ListView groupList;
-
-    @FXML
-    private ListView subjectList;
-
-    @FXML
-    private TableView<Subject> tableViewSubjects;
-
-    @FXML
-    private TableView<Teacher> tableViewTeachers;
-
     private ToggleGroup[] groupOfToggle = new ToggleGroup[7];
-
     private SQLiteC SQLiteC = new SQLiteC();
+    private Variables variables = new Variables();
 
     public void initialize(URL location, ResourceBundle resources){
-        this.groupList.setItems(Main.list);
-        this.subjectList.setItems(Main.listOfSubjects);
+        listUpdate();
         toggleRadio();
-        selectRadio(Main.groups);
+        selectRadio(variables.groups);
+    }
+
+    /**
+     * Метод, обновляющий списки
+     */
+    public void listUpdate(){
+        variables.update();
+        this.groupList.setItems(variables.listOfGroups);
+        this.subjectList.setItems(variables.listOfSubjects);
     }
 
     /**
@@ -297,36 +215,6 @@ public class DBFillingC implements Initializable {
     }
 
     /**
-     * Метод, редактирующий таблицу классов
-     */
-    public void updateGroupBD(){
-        SQLiteC.connect();
-        ObservableList<Group> groups = FXCollections.observableArrayList();
-        for (int i = 0; i < groupOfToggle.length; i++) {
-            int count = getCountOfGroups(groupOfToggle[i].getSelectedToggle());
-            groups.add(new Group(i+5,count));
-        }
-        groups.forEach(group ->
-            SQLiteC.updateRow("Классы", "КолКлассов", "Класс = "+group.getNumber(), group.getCount())
-        );
-        SQLiteC.disconnect();
-    }
-
-    /**
-     * Метод, редактирующий таблицу предметов
-     */
-    public void updateSubjectBD(){
-        System.out.println("subject");
-    }
-
-    /**
-     * Метод, редактирующий таблицу учителей
-     */
-    public void updateTeacherDB(){
-        System.out.println("teacher");
-    }
-
-    /**
      * Метод, возвращающий предметы для заданной группы
      * @param group
      * @return
@@ -347,6 +235,11 @@ public class DBFillingC implements Initializable {
         return result;
     }
 
+    /**
+     * Метод, возвращающий преподавателей для предмета
+     * @param subject
+     * @return
+     */
     public ObservableList<Teacher> takeTeachersOfSubject(Object subject){
         SQLiteC.connect();
         ObservableList<ObservableList> teachers = SQLiteC.queryRows("Преподаватели");
@@ -364,6 +257,14 @@ public class DBFillingC implements Initializable {
         return result;
     }
 
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                                  События                                         |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
+
     @FXML
     public void updateTVFromSubject(){
         Object item = subjectList.getSelectionModel().getSelectedItem();
@@ -380,7 +281,6 @@ public class DBFillingC implements Initializable {
         tableViewTeachers.getColumns().setAll(nameColumn, loadColumn, classroomColumn);
 
     }
-
     @FXML
     public void updateTVFromGroup(){
         Object item = groupList.getSelectionModel().getSelectedItem();
@@ -395,19 +295,23 @@ public class DBFillingC implements Initializable {
         this.tableViewSubjects.setItems(takeSubjectsOfGroup(item));
         this.tableViewSubjects.getColumns().setAll(nameColumn, loadColumn);
     }
-
     @FXML
-    public void saveButtonClick(){
-        updateGroupBD();
-        updateSubjectBD();
-        updateTeacherDB();
+    public void saveCountOfGroups(){
+        SQLiteC.connect();
+        ObservableList<Group> groups = FXCollections.observableArrayList();
+        for (int i = 0; i < groupOfToggle.length; i++) {
+            int count = getCountOfGroups(groupOfToggle[i].getSelectedToggle());
+            groups.add(new Group(i+5,count));
+        }
+        groups.forEach(group ->
+                SQLiteC.updateRow("Классы", "КолКлассов", "Класс = "+group.getNumber(), group.getCount())
+        );
+        SQLiteC.disconnect();
     }
-
     @FXML
     public void addSubject(){
         Main.showAddSubjectWindow(groupList.getSelectionModel().getSelectedItem(),this);
     }
-
     @FXML
     public  void deleteSubject(){
         SQLiteC.connect();
@@ -428,12 +332,8 @@ public class DBFillingC implements Initializable {
         Main.showDeleteSubjectWindow(this, id.get(0));
         else System.err.println("Ошибка поиска");
     }
-
     @FXML
-    public void addTeacher(){
-        Main.showAddTeacherWindow(subjectList.getSelectionModel().getSelectedItem(),this);
-    }
-
+    public void addTeacher(){ Main.showAddTeacherWindow(subjectList.getSelectionModel().getSelectedItem(),this); }
     @FXML
     public void deleteTeacher(){
         SQLiteC.connect();
@@ -455,4 +355,99 @@ public class DBFillingC implements Initializable {
             Main.showDeleteTeacherWindow(this, id.get(0));
         else System.err.println("Ошибка поиска");
     }
+
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                            Объявляем объекты FXML                                |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
+
+    @FXML
+    private RadioButton Radio5A;
+    @FXML
+    private RadioButton Radio5AB;
+    @FXML
+    private RadioButton Radio5ABV;
+    @FXML
+    private RadioButton Radio5ABVG;
+    @FXML
+    private RadioButton Radio5ABVGD;
+
+
+    @FXML
+    private RadioButton Radio6A;
+    @FXML
+    private RadioButton Radio6AB;
+    @FXML
+    private RadioButton Radio6ABV;
+    @FXML
+    private RadioButton Radio6ABVG;
+    @FXML
+    private RadioButton Radio6ABVGD;
+
+    @FXML
+    private RadioButton Radio7A;
+    @FXML
+    private RadioButton Radio7AB;
+    @FXML
+    private RadioButton Radio7ABV;
+    @FXML
+    private RadioButton Radio7ABVG;
+    @FXML
+    private RadioButton Radio7ABVGD;
+
+    @FXML
+    private RadioButton Radio8A;
+    @FXML
+    private RadioButton Radio8AB;
+    @FXML
+    private RadioButton Radio8ABV;
+    @FXML
+    private RadioButton Radio8ABVG;
+    @FXML
+    private RadioButton Radio8ABVGD;
+
+    @FXML
+    private RadioButton Radio9A;
+    @FXML
+    private RadioButton Radio9AB;
+    @FXML
+    private RadioButton Radio9ABV;
+    @FXML
+    private RadioButton Radio9ABVG;
+    @FXML
+    private RadioButton Radio9ABVGD;
+
+    @FXML
+    private RadioButton Radio10A;
+    @FXML
+    private RadioButton Radio10AB;
+    @FXML
+    private RadioButton Radio10ABV;
+    @FXML
+    private RadioButton Radio10ABVG;
+    @FXML
+    private RadioButton Radio10ABVGD;
+
+    @FXML
+    private RadioButton Radio11A;
+    @FXML
+    private RadioButton Radio11AB;
+    @FXML
+    private RadioButton Radio11ABV;
+    @FXML
+    private RadioButton Radio11ABVG;
+    @FXML
+    private RadioButton Radio11ABVGD;
+
+    @FXML
+    private ListView groupList;
+    @FXML
+    private ListView subjectList;
+    @FXML
+    private TableView<Subject> tableViewSubjects;
+    @FXML
+    private TableView<Teacher> tableViewTeachers;
 }
