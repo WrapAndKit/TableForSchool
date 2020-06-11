@@ -10,15 +10,15 @@ import java.net.URL;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
-public class ASController implements Initializable{
+public class AddSubjectC implements Initializable{
 
     private Stage addDialogStage;
 
-    public void setParent(DBFillingController parent) {
+    public void setParent(DBFillingC parent) {
         this.parent = parent;
     }
 
-    private DBFillingController parent;
+    private DBFillingC parent;
 
     public void setSelectedItem(Object selectedItem) {
         this.selectedItem = selectedItem;
@@ -38,9 +38,9 @@ public class ASController implements Initializable{
 
     @FXML
     private void ok(){
-        DBController dbController = new DBController();
-        dbController.connect();
-        ObservableList ids = dbController.queryColumnValue("Предметы", "id");
+        SQLiteC SQLiteC = new SQLiteC();
+        SQLiteC.connect();
+        ObservableList ids = SQLiteC.queryColumnValue("Предметы", "id");
         ids.sort(new Comparator() {
             @Override
             public int compare(Object o1, Object o2) {
@@ -49,9 +49,9 @@ public class ASController implements Initializable{
         });
         if(name != null && !name.getText().isEmpty())
             if(load != null && !load.getText().isEmpty()){
-                dbController.addRow("Предметы",selectedItem,name.getText(),
+                SQLiteC.addRow("Предметы",selectedItem,name.getText(),
                         load.getText(), Integer.parseInt(ids.get(0).toString())+1);
-                dbController.disconnect();
+                SQLiteC.disconnect();
                 addDialogStage.close();
                 parent.updateTVFromGroup();
             }

@@ -9,13 +9,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import packageForStruct.Main;
 import packageForStruct.workClasses.Subject;
 import packageForStruct.workClasses.Group;
+import packageForStruct.workClasses.Teacher;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class DBFillingController implements Initializable {
+public class DBFillingC implements Initializable {
 
+    //
     @FXML
     private RadioButton Radio5A;
     @FXML
@@ -26,6 +27,7 @@ public class DBFillingController implements Initializable {
     private RadioButton Radio5ABVG;
     @FXML
     private RadioButton Radio5ABVGD;
+    //
 
     @FXML
     private RadioButton Radio6A;
@@ -97,14 +99,21 @@ public class DBFillingController implements Initializable {
     private ListView groupList;
 
     @FXML
+    private ListView subjectList;
+
+    @FXML
     private TableView<Subject> tableViewSubjects;
+
+    @FXML
+    private TableView<Teacher> tableViewTeachers;
 
     private ToggleGroup[] groupOfToggle = new ToggleGroup[7];
 
-    private DBController dbController = new DBController();
+    private SQLiteC SQLiteC = new SQLiteC();
 
     public void initialize(URL location, ResourceBundle resources){
         this.groupList.setItems(Main.list);
+        this.subjectList.setItems(Main.listOfSubjects);
         toggleRadio();
         selectRadio(Main.groups);
     }
@@ -291,16 +300,16 @@ public class DBFillingController implements Initializable {
      * Метод, редактирующий таблицу классов
      */
     public void updateGroupBD(){
-        dbController.connect();
+        SQLiteC.connect();
         ObservableList<Group> groups = FXCollections.observableArrayList();
         for (int i = 0; i < groupOfToggle.length; i++) {
             int count = getCountOfGroups(groupOfToggle[i].getSelectedToggle());
             groups.add(new Group(i+5,count));
         }
         groups.forEach(group ->
-            dbController.updateRow("Классы", "КолКлассов", "Класс = "+group.getNumber(), group.getCount())
+            SQLiteC.updateRow("Классы", "КолКлассов", "Класс = "+group.getNumber(), group.getCount())
         );
-        dbController.disconnect();
+        SQLiteC.disconnect();
     }
 
     /**
@@ -323,26 +332,53 @@ public class DBFillingController implements Initializable {
      * @return
      */
     public ObservableList<Subject> takeSubjectsOfGroup(Object group){
-        dbController.connect();
-        ObservableList<ObservableList> subjects = dbController.queryRows("Предметы");
+        SQLiteC.connect();
+        ObservableList<ObservableList> subjects = SQLiteC.queryRows("Предметы");
         ObservableList<ObservableList> subjectsForGroup = FXCollections.observableArrayList();
         subjects.forEach(subject -> {
             if (subject.get(0).equals(group)) subjectsForGroup.add(subject);
         });
-        dbController.disconnect();
+        SQLiteC.disconnect();
         ObservableList<Subject> result = FXCollections.observableArrayList();
         subjectsForGroup.forEach(subject ->{
             if(subject.get(1)!= null && subject.get(2)!= null)result.add(new Subject(subject.get(1).toString(), subject.get(2).toString()));
-            else result.add(new Subject("", ""));
+            else result.add(new Subject());
+        });
+        return result;
+    }
+
+    public ObservableList<Teacher> takeTeachersOfSubject(Object subject){
+        SQLiteC.connect();
+        ObservableList<ObservableList> teachers = SQLiteC.queryRows("Преподаватели");
+        ObservableList<ObservableList> teachersForSubject = FXCollections.observableArrayList();
+        teachers.forEach(teacher ->{
+            if(teacher.get(2).equals(subject)) teachersForSubject.add(teacher);
+        });
+        SQLiteC.disconnect();
+        ObservableList<Teacher> result = FXCollections.observableArrayList();
+        teachersForSubject.forEach(teacher ->{
+            if(teacher.get(1) != null && teacher.get(3) != null && teacher.get(4) != null)
+                result.add(new Teacher(teacher.get(1).toString(),teacher.get(4).toString(), teacher.get(3).toString()));
+            else result.add(new Teacher());
         });
         return result;
     }
 
     @FXML
-    public void saveButtonClick(){
-        updateGroupBD();
-        updateSubjectBD();
-        updateTeacherDB();
+    public void updateTVFromSubject(){
+        Object item = subjectList.getSelectionModel().getSelectedItem();
+        TableColumn<Teacher,String> nameColumn = new TableColumn<>("ФИО преподавателя");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableColumn<Teacher,String> loadColumn = new TableColumn<>("Часы в неделю");
+        loadColumn.setCellValueFactory(new PropertyValueFactory<>("load"));
+
+        TableColumn<Teacher,String> classroomColumn = new TableColumn<>("Аудитория");
+        classroomColumn.setCellValueFactory(new PropertyValueFactory<>("classroom"));
+
+        tableViewTeachers.setItems(takeTeachersOfSubject(item));
+        tableViewTeachers.getColumns().setAll(nameColumn, loadColumn, classroomColumn);
+
     }
 
     @FXML
@@ -354,8 +390,17 @@ public class DBFillingController implements Initializable {
         TableColumn<Subject, String> loadColumn = new TableColumn<>("Часы в неделю");
         loadColumn.setCellValueFactory(new PropertyValueFactory<>("load"));
 
+        takeSubjectsOfGroup(item).forEach(System.out::println);
+
         this.tableViewSubjects.setItems(takeSubjectsOfGroup(item));
         this.tableViewSubjects.getColumns().setAll(nameColumn, loadColumn);
+    }
+
+    @FXML
+    public void saveButtonClick(){
+        updateGroupBD();
+        updateSubjectBD();
+        updateTeacherDB();
     }
 
     @FXML
@@ -365,10 +410,10 @@ public class DBFillingController implements Initializable {
 
     @FXML
     public  void deleteSubject(){
-        dbController.connect();
+        SQLiteC.connect();
         ObservableList<Integer> id = FXCollections.observableArrayList();
         Subject subject = tableViewSubjects.getSelectionModel().getSelectedItem();
-        ObservableList<ObservableList> rows = dbController.queryRows("Предметы");
+        ObservableList<ObservableList> rows = SQLiteC.queryRows("Предметы");
         rows.forEach(row ->{
             if (row.get(0).equals(groupList.getSelectionModel().getSelectedItem())){
                 int res = (row.get(3) != null)?Integer.parseInt(row.get(3).toString()):0;
@@ -378,10 +423,36 @@ public class DBFillingController implements Initializable {
                    id.add(res);
             }
         });
-        dbController.disconnect();
+        SQLiteC.disconnect();
         if(id.size() == 1)
         Main.showDeleteSubjectWindow(this, id.get(0));
         else System.err.println("Ошибка поиска");
     }
 
+    @FXML
+    public void addTeacher(){
+        Main.showAddTeacherWindow(subjectList.getSelectionModel().getSelectedItem(),this);
+    }
+
+    @FXML
+    public void deleteTeacher(){
+        SQLiteC.connect();
+        ObservableList<Integer> id = FXCollections.observableArrayList();
+        Teacher teacher = tableViewTeachers.getSelectionModel().getSelectedItem();
+        ObservableList<ObservableList> rows = SQLiteC.queryRows("Преподаватели");
+        rows.forEach(row ->{
+            if (row.get(2).equals(subjectList.getSelectionModel().getSelectedItem())){
+                int res = (row.get(0) != null)?Integer.parseInt(row.get(0).toString()):0;
+                String name = (row.get(1) != null)?row.get(1).toString():"";
+                String classroom = (row.get(3) != null)?row.get(3).toString():"";
+                String load = (row.get(4) != null)?row.get(4).toString():"";
+                if(name.equals(teacher.getName()) && load.equals(teacher.getLoad()) && classroom.equals(teacher.getClassroom()))
+                    id.add(res);
+            }
+        });
+        SQLiteC.disconnect();
+        if(id.size() == 1)
+            Main.showDeleteTeacherWindow(this, id.get(0));
+        else System.err.println("Ошибка поиска");
+    }
 }

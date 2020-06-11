@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="packageForStruct.controllers.DBFillingController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="packageForStruct.controllers.DBFillingC">
    <children>
       <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
         <items>
@@ -300,12 +300,12 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <ListView prefHeight="200.0" prefWidth="200.0" />
+                                          <ListView fx:id="subjectList" onKeyPressed="#updateTVFromSubject" onMouseClicked="#updateTVFromSubject" prefHeight="200.0" prefWidth="200.0" />
                                        </items>
                                     </SplitPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <TableView focusTraversable="false" prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                                          <TableView fx:id="tableViewTeachers" focusTraversable="false" prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
                                              <columns>
                                                 <TableColumn prefWidth="100.0" text="ФИО преподавателя:" />
                                                 <TableColumn prefWidth="75.0" text="Часы в неделю:" />
@@ -315,6 +315,16 @@
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                              </columnResizePolicy>
                                           </TableView>
+                                          <Button fx:id="addTeacherButton" layoutY="531.0" mnemonicParsing="false" onAction="#addTeacher" prefHeight="40.0" text="Добавить преподавателя">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="deleteTeacherButton" layoutX="422.0" layoutY="531.0" mnemonicParsing="false" onAction="#deleteTeacher" prefHeight="40.0" text="Удалить преподавателя">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Button>
                                        </children>
                                     </AnchorPane>
                                 </items>

@@ -1,4 +1,4 @@
 package packageForStruct.controllers;
 
-public class Controller {
+public class DesigningC {
 }

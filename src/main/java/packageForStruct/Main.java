@@ -14,21 +14,18 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import packageForStruct.controllers.ASController;
-import packageForStruct.controllers.CTDController;
-import packageForStruct.controllers.DBController;
-import packageForStruct.controllers.DBFillingController;
+import packageForStruct.controllers.*;
 import packageForStruct.workClasses.Group;
 
 public class Main extends Application {
 
-    private final DBController controller = new DBController();
+    private final SQLiteC controller = new SQLiteC();
 
     private static Stage primaryStage;
 
-    public static ObservableList<String> wordsList;
-
     public static ObservableList<String> list;
+
+    public static ObservableList<String> listOfSubjects;
 
     public static ObservableList<Group> groups= FXCollections.observableArrayList();
 
@@ -44,7 +41,7 @@ public class Main extends Application {
         }
     }
 
-    public static void showAddSubjectWindow(Object item, DBFillingController filCon){
+    public static void showAddSubjectWindow(Object item, DBFillingC filCon){
         try{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/fxml/AddSubject.fxml"));
@@ -54,7 +51,7 @@ public class Main extends Application {
             addDialogStage.initModality(Modality.WINDOW_MODAL);
             addDialogStage.initOwner(primaryStage);
             addDialogStage.setScene(new Scene(page));
-            ASController controller = loader.getController();
+            AddSubjectC controller = loader.getController();
             controller.setAddDialogStage(addDialogStage);
             controller.setSelectedItem(item);
             controller.setParent(filCon);
@@ -65,17 +62,59 @@ public class Main extends Application {
         }
     }
 
-    public static void showDeleteSubjectWindow(DBFillingController filCon, int id){
+    public static void showDeleteSubjectWindow(DBFillingC filCon, int id){
         try{
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("/fxml/ConfirmToDelete.fxml"));
+            loader.setLocation(Main.class.getResource("/fxml/DeleteSubject.fxml"));
             AnchorPane page = loader.load();
             Stage addDialogStage = new Stage();
             addDialogStage.setTitle("Удаление предмета");
             addDialogStage.initModality(Modality.WINDOW_MODAL);
             addDialogStage.initOwner(primaryStage);
             addDialogStage.setScene(new Scene(page));
-            CTDController controller = loader.getController();
+            DeleteSubjectC controller = loader.getController();
+            controller.setDeleteDialogStage(addDialogStage);
+            controller.setId(id);
+            controller.setParent(filCon);
+            addDialogStage.show();
+        }
+        catch(IOException e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public static void showAddTeacherWindow(Object item, DBFillingC filCon){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/fxml/AddTeacher.fxml"));
+            AnchorPane page = loader.load();
+            Stage addDialogStage = new Stage();
+            addDialogStage.setTitle("Добавление преподавателя");
+            addDialogStage.initModality(Modality.WINDOW_MODAL);
+            addDialogStage.initOwner(primaryStage);
+            addDialogStage.setScene(new Scene(page));
+            AddTeacherC controller = loader.getController();
+            controller.setAddDialogStage(addDialogStage);
+            controller.setSelectedItem(item);
+            controller.setParent(filCon);
+            addDialogStage.show();
+        }
+        catch(IOException e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public static void showDeleteTeacherWindow(DBFillingC filCon, int id){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/fxml/DeleteTeacher.fxml"));
+            AnchorPane page = loader.load();
+            Stage addDialogStage = new Stage();
+            addDialogStage.setTitle("Удаление преподавателя");
+            addDialogStage.initModality(Modality.WINDOW_MODAL);
+            addDialogStage.initOwner(primaryStage);
+            addDialogStage.setScene(new Scene(page));
+            DeleteTeacherС controller = loader.getController();
             controller.setDeleteDialogStage(addDialogStage);
             controller.setId(id);
             controller.setParent(filCon);
@@ -102,7 +141,12 @@ public class Main extends Application {
         });
 
         list = controller.queryColumnValue("Классы","Класс");
-        wordsList = controller.queryColumnValue("Предметы","Класс");
+        listOfSubjects = controller.queryColumnValue("Предметы", "Предмет");
+        ObservableList<String> result = FXCollections.observableArrayList();
+        listOfSubjects.forEach(subject -> {
+            if(!result.contains(subject)) result.add(subject);
+        });
+        listOfSubjects = result;
 
         ObservableList<ObservableList> groupRows = controller.queryRows("Классы");
         groupRows.forEach(row -> groups.add(new Group(Integer.parseInt(row.get(0).toString()), Integer.parseInt(row.get(1).toString()))));

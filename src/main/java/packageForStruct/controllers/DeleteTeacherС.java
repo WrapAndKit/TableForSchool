@@ -1,11 +1,9 @@
 package packageForStruct.controllers;
 
-import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-public class CTDController {
-
+public class DeleteTeacherС {
     public void setDeleteDialogStage(Stage deleteDialogStage) {
         this.deleteDialogStage = deleteDialogStage;
     }
@@ -18,20 +16,20 @@ public class CTDController {
         this.id = id;
     }
 
-    public void setParent(DBFillingController parent) {
+    public void setParent(DBFillingC parent) {
         this.parent = parent;
     }
 
-    private DBFillingController parent;
+    private DBFillingC parent;
 
     @FXML
     private void delete(){
-        DBController dbController = new DBController();
-        dbController.connect();
-        dbController.deleteRow("Предметы", "id",id);
-        dbController.disconnect();
+        SQLiteC SQLiteC = new SQLiteC();
+        SQLiteC.connect();
+        SQLiteC.deleteRow("Преподаватели", "id",id);
+        SQLiteC.disconnect();
         deleteDialogStage.close();
-        parent.updateTVFromGroup();
+        parent.updateTVFromSubject();
     }
     @FXML
     private void cancel(){
