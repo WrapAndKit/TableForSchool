@@ -14,11 +14,20 @@ public class DBController {
 
     private Connection connection;
 
+    private String dataBaseUrl;
+
+    public DBController() {
+        dataBaseUrl = "C:\\Users\\Progy\\IdeaProjects\\TableForSchool\\src\\main\\sqlite\\dbForSchool.db";
+    }
+
+    public DBController(String dbFileName) {
+        dataBaseUrl = dbFileName;
+    }
+
     public Connection getConnection() {return connection;}
 
     public void connect(){
         Connection connection = null;
-        String dataBaseUrl = "C:\\Users\\Progy\\IdeaProjects\\TableForSchool\\src\\main\\sqlite\\dbForSchool.db";
         StringBuilder dbUrl = new StringBuilder("jdbc:sqlite:");
         dbUrl.append(dataBaseUrl);
         try{
@@ -87,6 +96,11 @@ public class DBController {
             System.err.println(rowQueryException.toString());
         }
         return rows;
+    }
+
+    public ObservableList<String> queryFirstRaw(String tableName) {
+        ObservableList<ObservableList> rows = queryRows(tableName);
+        return (ObservableList<String>) rows.get(0);
     }
 
     public void deleteRow(String tableName, String param, Object value){

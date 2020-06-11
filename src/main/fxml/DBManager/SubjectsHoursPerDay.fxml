@@ -3,8 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TitledPane animated="false" collapsible="false" text="Введите допустимое количество часов одного предмета в день"
-            xmlns="http://javafx.com/javafx/10.0.2-internal">
+<TitledPane animated="false" collapsible="false" text="Введите допустимое количество часов одного предмета в день" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.DBManager.SubjectsHoursPerDayController">
     <GridPane>
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -13,12 +12,9 @@
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-        <Label text="Максимальная" GridPane.rowIndex="1" />
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Button mnemonicParsing="false" text="Ок" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <Label text="Минимальное" />
-        <TextField GridPane.columnIndex="1" />
+        <Label text="Максимальное" />
+        <TextField fx:id="max" GridPane.columnIndex="1" />
+        <Button mnemonicParsing="false" text="Ок" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </GridPane>
 </TitledPane>

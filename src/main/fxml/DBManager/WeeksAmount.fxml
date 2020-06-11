@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <TitledPane animated="false" collapsible="false" text="Введите допустимое количество недель в четверти"
-            xmlns="http://javafx.com/javafx/10.0.2-internal">
+            xmlns="http://javafx.com/javafx/10.0.2-internal"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.DBManager.WeeksAmountController">
    <GridPane>
       <columnConstraints>
          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0"/>
@@ -19,7 +19,7 @@
               GridPane.rowIndex="2"/>
       <Label text="Минимальное"/>
       <Label text="Максимальное" GridPane.rowIndex="1"/>
-      <TextField GridPane.columnIndex="1"/>
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+      <TextField fx:id="min" GridPane.columnIndex="1"/>
+      <TextField fx:id="max" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
    </GridPane>
 </TitledPane>

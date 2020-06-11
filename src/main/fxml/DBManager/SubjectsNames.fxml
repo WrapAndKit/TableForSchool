@@ -3,20 +3,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TitledPane animated="false" collapsible="false" text="Введите названия предметов"
-            xmlns="http://javafx.com/javafx/10.0.2-internal">
+<TitledPane animated="false" collapsible="false" text="Введите названия предметов" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.DBManager.SubjectsNamesController">
     <GridPane>
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints fillHeight="false" />
         </rowConstraints>
-        <TextField promptText="Название предмета"/>
-        <Button mnemonicParsing="false" text="Добавить" GridPane.columnIndex="1"/>
-        <Button mnemonicParsing="false" text="Удалить" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-        <ListView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1"/>
+        <TextField promptText="Название предмета" />
+        <Button mnemonicParsing="false" text="Добавить" GridPane.columnIndex="1" />
+        <Button mnemonicParsing="false" text="Удалить" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <ListView fx:id="subjects" GridPane.rowIndex="1" />
     </GridPane>
 </TitledPane>
