@@ -45,7 +45,7 @@ public class DBManagerController implements Initializable {
         String selectedItem = subjects.getSelectionModel().getSelectedItem();
 
         switch (selectedItem) {
-            case "Название":
+            case "Добавить/Удалить":
                 setRightPane("SubjectsNames");
                 break;
             case "Нагрузка в неделю":
@@ -77,7 +77,7 @@ public class DBManagerController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setItems(weeks, new String[]{"Количество недель"});
         setItems(grades, new String[]{"Количество", "Нагрузка в неделю"});
-        setItems(subjects, new String[]{"Название", "Нагрузка в неделю", "Нагрузка в день"});
+        setItems(subjects, new String[]{"Добавить/Удалить", "Нагрузка в неделю", "Нагрузка в день"});
         setItems(teachers, new String[]{"Количество", "Нагрузка в неделю", "Количество предметов"});
     }
 
