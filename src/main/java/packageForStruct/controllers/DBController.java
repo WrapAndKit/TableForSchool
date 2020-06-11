@@ -1,8 +1,8 @@
-package main.java.controllers;
+package packageForStruct.controllers;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,7 +25,6 @@ public class DBController {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(
                     dbUrl.toString());
-            System.out.println("Connected to sqlite database!");
         }
         catch(Exception connectionError){
             System.err.println(connectionError.getMessage());

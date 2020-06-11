@@ -1,4 +1,4 @@
-package main.java.workClasses;
+package packageForStruct.workClasses;
 
 import javafx.scene.control.TableView;
 
