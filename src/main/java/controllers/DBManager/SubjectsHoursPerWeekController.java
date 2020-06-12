@@ -31,20 +31,33 @@ public class SubjectsHoursPerWeekController implements Initializable {
 
         subjects.getSelectionModel().selectedIndexProperty().addListener((ov, value, newValue) -> {
             int subjectNumber = Integer.parseInt(ov.getValue().toString());
-            setMinAndMax(subjectNumber);
+            String subject = subjects.getItems().get(subjectNumber);
+            setMinAndMax(subject);
         });
 
-        subjects.setValue((String) subjectsNames.get(0));
+        if (!subjectsNames.isEmpty()) {
+            subjects.setValue((String) subjectsNames.get(0));
+        }
+
         db.disconnect();
     }
 
-    private void setMinAndMax(int subjectNumber) {
-        DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
+    private void setMinAndMax(String subject) {
+        final DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
         db.connect();
-        ObservableList<ObservableList> rows = db.queryRows("subjects_hoursPerWeek");
-        ObservableList row = rows.get(subjectNumber);
-        min.setText((String) row.get(1));
-        max.setText((String) row.get(2));
+        String condition = "name = '" + subject + "'";
+        ObservableList<String> row = db.queryRow("subjects_hoursPerWeek", condition);
+        min.setText(row.get(1));
+        max.setText(row.get(2));
+        db.disconnect();
+    }
+
+    public void handleOnAction() {
+        db.connect();
+        String selectedSubject = subjects.getSelectionModel().getSelectedItem();
+        String condition = "name = '" + selectedSubject + "'";
+        db.updateRow("subjects_hoursPerWeek", "min", condition, min.getText());
+        db.updateRow("subjects_hoursPerWeek", "max", condition, max.getText());
         db.disconnect();
     }
 }

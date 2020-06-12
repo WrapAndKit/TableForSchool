@@ -4,8 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TitledPane animated="false" collapsible="false"
-            text="Введите допустимую нагрузку для предметов в неделю (в академических часах)" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.DBManager.SubjectsHoursPerWeekController">
+<TitledPane animated="false" collapsible="false" text="Введите допустимую нагрузку для предметов в неделю (в академических часах)" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.DBManager.SubjectsHoursPerWeekController">
     <GridPane>
         <columnConstraints>
             <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -31,15 +30,15 @@
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Label>
-        <TextField fx:id="min" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <TextField fx:id="min" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleOnAction" prefHeight="20.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="5.0" />
          </GridPane.margin></TextField>
-        <TextField fx:id="max" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <TextField fx:id="max" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleOnAction" prefHeight="20.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="5.0" />
          </GridPane.margin></TextField>
-        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Ок" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOnAction" prefHeight="25.0" prefWidth="60.0" text="Ок" GridPane.columnIndex="1" GridPane.rowIndex="3" />
         <ChoiceBox fx:id="subjects" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets left="5.0" />

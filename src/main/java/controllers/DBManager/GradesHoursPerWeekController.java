@@ -48,7 +48,7 @@ public class GradesHoursPerWeekController implements Initializable {
     @FXML
     private TextField max11;
 
-    DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
+    private final DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -73,6 +73,33 @@ public class GradesHoursPerWeekController implements Initializable {
         max9.setText(maxColumn.get(4));
         max10.setText(maxColumn.get(5));
         max11.setText(maxColumn.get(6));
+
+        db.disconnect();
+    }
+
+    public void handleOnAction() {
+        db.connect();
+
+        db.updateRow("grades_hoursPerWeek", "min", "name = 5", min5.getText());
+        db.updateRow("grades_hoursPerWeek", "max", "name = 5", max5.getText());
+
+        db.updateRow("grades_hoursPerWeek", "min", "name = 6", min6.getText());
+        db.updateRow("grades_hoursPerWeek", "max", "name = 6", max6.getText());
+
+        db.updateRow("grades_hoursPerWeek", "min", "name = 7", min7.getText());
+        db.updateRow("grades_hoursPerWeek", "max", "name = 7", max7.getText());
+
+        db.updateRow("grades_hoursPerWeek", "min", "name = 8", min8.getText());
+        db.updateRow("grades_hoursPerWeek", "max", "name = 8", max8.getText());
+
+        db.updateRow("grades_hoursPerWeek", "min", "name = 9", min9.getText());
+        db.updateRow("grades_hoursPerWeek", "max", "name = 9", max9.getText());
+
+        db.updateRow("grades_hoursPerWeek", "min", "name = 10", min10.getText());
+        db.updateRow("grades_hoursPerWeek", "max", "name = 10", max10.getText());
+
+        db.updateRow("grades_hoursPerWeek", "min", "name = 11", min11.getText());
+        db.updateRow("grades_hoursPerWeek", "max", "name = 11", max11.getText());
 
         db.disconnect();
     }

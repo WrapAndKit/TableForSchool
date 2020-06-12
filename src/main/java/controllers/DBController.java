@@ -98,6 +98,24 @@ public class DBController {
         return rows;
     }
 
+    public ObservableList<String> queryRow(String tableName, String condition) {
+        String statement = "SELECT * " +
+                "FROM " + tableName +
+                " WHERE " + condition;
+        ObservableList<String> row = FXCollections.observableArrayList();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
+                row.add(resultSet.getString(i));
+            }
+            resultSet.close();
+        }
+        catch (SQLException exception) {
+            System.err.println(exception.toString());
+        }
+        return row;
+    }
+
     public ObservableList<String> queryFirstRaw(String tableName) {
         ObservableList<ObservableList> rows = queryRows(tableName);
         return (ObservableList<String>) rows.get(0);

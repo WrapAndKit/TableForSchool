@@ -14,13 +14,19 @@ public class GradesAmountController implements Initializable {
     @FXML
     private TextField max;
 
-    private DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
+    private final DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         db.connect();
         ObservableList<String> firstRaw = db.queryFirstRaw("grades_amount");
         max.setText(firstRaw.get(0));
+        db.disconnect();
+    }
+
+    public void handleOnAction() {
+        db.connect();
+        db.updateRow("grades_amount", "max", "true", max.getText());
         db.disconnect();
     }
 }

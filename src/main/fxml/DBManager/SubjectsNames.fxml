@@ -14,15 +14,15 @@
             <RowConstraints vgrow="SOMETIMES" />
             <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
-        <TextField promptText="Название предмета">
+        <TextField fx:id="newSubjectName" onAction="#handleAddButtonOnAction" promptText="Название предмета">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></TextField>
-        <Button mnemonicParsing="false" text="Добавить" GridPane.columnIndex="1">
+        <Button mnemonicParsing="false" onAction="#handleAddButtonOnAction" text="Добавить" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets left="5.0" />
          </GridPane.margin></Button>
-        <Button mnemonicParsing="false" text="Удалить" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Button mnemonicParsing="false" onAction="#handleRemoveButtonOnAction" text="Удалить" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="5.0" />
          </GridPane.margin></Button>

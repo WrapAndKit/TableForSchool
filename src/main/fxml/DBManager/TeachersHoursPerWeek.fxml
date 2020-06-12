@@ -19,16 +19,16 @@
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Label>
-        <TextField fx:id="max" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <TextField fx:id="max" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleOnAction" prefHeight="20.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="5.0" />
          </GridPane.margin></TextField>
-        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Ок" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOnAction" prefHeight="25.0" prefWidth="60.0" text="Ок" GridPane.columnIndex="1" GridPane.rowIndex="2" />
         <Label text="Минимальная">
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Label>
-        <TextField fx:id="min" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="50.0" GridPane.columnIndex="1">
+        <TextField fx:id="min" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleOnAction" prefHeight="20.0" prefWidth="50.0" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets left="5.0" />
          </GridPane.margin></TextField>

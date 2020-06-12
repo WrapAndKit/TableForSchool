@@ -17,7 +17,7 @@ public class WeeksAmountController implements Initializable {
     @FXML
     private TextField max;
 
-    private DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
+    private final DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -25,6 +25,13 @@ public class WeeksAmountController implements Initializable {
         ObservableList<String> firstRaw = db.queryFirstRaw("weeks");
         min.setText(firstRaw.get(0));
         max.setText(firstRaw.get(1));
+        db.disconnect();
+    }
+
+    public void handleOnAction() {
+        db.connect();
+        db.updateRow("weeks", "min", "true", min.getText());
+        db.updateRow("weeks", "max", "true", max.getText());
         db.disconnect();
     }
 }

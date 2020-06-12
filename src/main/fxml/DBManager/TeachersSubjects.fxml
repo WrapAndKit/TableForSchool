@@ -18,10 +18,10 @@
          <GridPane.margin>
             <Insets right="5.0" />
          </GridPane.margin></Label>
-        <TextField fx:id="max" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="50.0" GridPane.columnIndex="1">
+        <TextField fx:id="max" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleOnAction" prefHeight="20.0" prefWidth="50.0" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets left="5.0" />
          </GridPane.margin></TextField>
-        <Button mnemonicParsing="false" text="Ок" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#handleOnAction" text="Ок" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </GridPane>
 </TitledPane>

@@ -27,4 +27,11 @@ public class TeachersHoursPerWeekController implements Initializable {
         max.setText(firstRaw.get(1));
         db.disconnect();
     }
+
+    public void handleOnAction() {
+        db.connect();
+        db.updateRow("teachers_hoursPerWeek", "min", "true", min.getText());
+        db.updateRow("teachers_hoursPerWeek", "max", "true", max.getText());
+        db.disconnect();
+    }
 }
