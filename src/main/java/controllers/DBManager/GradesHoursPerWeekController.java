@@ -48,7 +48,7 @@ public class GradesHoursPerWeekController implements Initializable {
     @FXML
     private TextField max11;
 
-    private final DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
+    private final DBController db = new DBController("src/main/sqlite/knowledge.sqlite3");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

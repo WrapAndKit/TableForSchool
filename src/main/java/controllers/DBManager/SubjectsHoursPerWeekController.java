@@ -21,7 +21,7 @@ public class SubjectsHoursPerWeekController implements Initializable {
     @FXML
     private ChoiceBox<String> subjects;
 
-    private final DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
+    private final DBController db = new DBController("src/main/sqlite/knowledge.sqlite3");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,7 +43,7 @@ public class SubjectsHoursPerWeekController implements Initializable {
     }
 
     private void setMinAndMax(String subject) {
-        final DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
+        final DBController db = new DBController("src/main/sqlite/knowledge.sqlite3");
         db.connect();
         String condition = "name = '" + subject + "'";
         ObservableList<String> row = db.queryRow("subjects_hoursPerWeek", condition);

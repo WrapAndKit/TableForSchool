@@ -18,7 +18,7 @@ public class SubjectsNamesController implements Initializable {
     @FXML
     private ListView<String> subjects;
 
-    private final DBController db = new DBController("src/main/sqlite/knowledges.sqlite3");
+    private final DBController db = new DBController("src/main/sqlite/knowledge.sqlite3");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
