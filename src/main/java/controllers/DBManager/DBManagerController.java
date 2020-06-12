@@ -1,5 +1,7 @@
 package main.java.controllers.DBManager;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,20 +14,37 @@ import java.util.ResourceBundle;
 
 public class DBManagerController implements Initializable {
 
-    @FXML
-    private ListView<String> weeks;
+    @FXML private ListView<String> weeks;
+    @FXML private ListView<String> grades;
+    @FXML private ListView<String> subjects;
+    @FXML private ListView<String> teachers;
 
-    @FXML
-    private ListView<String> grades;
+    @FXML private TitledPane titledPane1;
+    @FXML private TitledPane titledPane2;
+    @FXML private TitledPane titledPane3;
+    @FXML private TitledPane titledPane4;
 
-    @FXML
-    private ListView<String> subjects;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setItems(weeks, new String[]{"Количество недель"});
+        setItems(grades, new String[]{"Количество", "Нагрузка в неделю"});
+        setItems(subjects, new String[]{"Добавить/Удалить", "Нагрузка в неделю", "Нагрузка в день"});
+        setItems(teachers, new String[]{"Количество", "Нагрузка в неделю", "Количество предметов"});
 
-    @FXML
-    private ListView<String> teachers;
+        ChangeListener<Boolean> changeListener = (observable, oldValue, newValue) -> {
+            if (!newValue) {
+                rightPane.getChildren().clear();
+            }
+        };
+
+        titledPane1.expandedProperty().addListener(changeListener);
+        titledPane2.expandedProperty().addListener(changeListener);
+        titledPane3.expandedProperty().addListener(changeListener);
+        titledPane4.expandedProperty().addListener(changeListener);
+    }
 
     @FXML public void handleMouseClickWeeks() {
-             setRightPane("WeeksAmount");
+        setRightPane("WeeksAmount");
     }
 
     @FXML public void handleMouseClickGrades() {
@@ -71,14 +90,6 @@ public class DBManagerController implements Initializable {
                 setRightPane("TeachersSubjects");
                 break;
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        setItems(weeks, new String[]{"Количество недель"});
-        setItems(grades, new String[]{"Количество", "Нагрузка в неделю"});
-        setItems(subjects, new String[]{"Добавить/Удалить", "Нагрузка в неделю", "Нагрузка в день"});
-        setItems(teachers, new String[]{"Количество", "Нагрузка в неделю", "Количество предметов"});
     }
 
     private void setItems(ListView<String> listView, String[] items) {

@@ -8,16 +8,16 @@
     <AnchorPane>
         <Accordion maxHeight="-Infinity" prefHeight="195.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <panes>
-                <TitledPane animated="false" text="Четверть">
+                <TitledPane fx:id="titledPane1" animated="false" text="Четверть">
                     <ListView fx:id="weeks" onMouseClicked="#handleMouseClickWeeks" />
                 </TitledPane>
-                <TitledPane animated="false" text="Классы">
+                <TitledPane fx:id="titledPane2" animated="false" text="Классы">
                     <ListView fx:id="grades" onMouseClicked="#handleMouseClickGrades" />
                 </TitledPane>
-                <TitledPane animated="false" text="Предметы">
+                <TitledPane fx:id="titledPane3" animated="false" text="Предметы">
                     <ListView fx:id="subjects" onMouseClicked="#handleMouseClickSubjects" />
                 </TitledPane>
-                <TitledPane animated="false" text="Преподаватели">
+                <TitledPane fx:id="titledPane4" animated="false" text="Преподаватели">
                     <ListView fx:id="teachers" onMouseClicked="#handleMouseClickTeachers" />
                 </TitledPane>
             </panes>
