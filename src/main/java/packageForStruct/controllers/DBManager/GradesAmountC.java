@@ -11,9 +11,6 @@ import java.util.ResourceBundle;
 
 public class GradesAmountC implements Initializable {
 
-    @FXML
-    private TextField max;
-
     private final SQLiteC db = new SQLiteC("C:\\Users\\Progy\\IdeaProjects\\TableForSchool\\src\\main\\sqlite\\knowledge.sqlite3");
 
     @Override
@@ -29,4 +26,14 @@ public class GradesAmountC implements Initializable {
         db.updateRow("grades_amount", "max", "true", max.getText());
         db.disconnect();
     }
+
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                            Объявляем объекты FXML                                |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
+    @FXML private TextField max;
+
 }

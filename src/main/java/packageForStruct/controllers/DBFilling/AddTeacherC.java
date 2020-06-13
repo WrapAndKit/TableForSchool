@@ -62,11 +62,8 @@ public class AddTeacherC implements Initializable {
      *                                                                                  |
      ************************************************************************************/
 
-    @FXML
-    private TextField name;
-    @FXML
-    private TextField load;
-    @FXML
-    private TextField classroom;
+    @FXML private TextField name;
+    @FXML private TextField load;
+    @FXML private TextField classroom;
 
 }

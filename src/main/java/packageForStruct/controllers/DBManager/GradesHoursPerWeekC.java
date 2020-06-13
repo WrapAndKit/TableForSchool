@@ -11,43 +11,6 @@ import java.util.ResourceBundle;
 
 public class GradesHoursPerWeekC implements Initializable {
 
-    // спойлер - много говнокода
-
-    @FXML
-    private TextField min5;
-    @FXML
-    private TextField max5;
-
-    @FXML
-    private TextField min6;
-    @FXML
-    private TextField max6;
-
-    @FXML
-    private TextField min7;
-    @FXML
-    private TextField max7;
-
-    @FXML
-    private TextField min8;
-    @FXML
-    private TextField max8;
-
-    @FXML
-    private TextField min9;
-    @FXML
-    private TextField max9;
-
-    @FXML
-    private TextField min10;
-    @FXML
-    private TextField max10;
-
-    @FXML
-    private TextField min11;
-    @FXML
-    private TextField max11;
-
     private final SQLiteC db = new SQLiteC("C:\\Users\\Progy\\IdeaProjects\\TableForSchool\\src\\main\\sqlite\\knowledge.sqlite3");
 
     @Override
@@ -103,4 +66,33 @@ public class GradesHoursPerWeekC implements Initializable {
 
         db.disconnect();
     }
+
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                            Объявляем объекты FXML                                |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
+
+    @FXML private TextField min5;
+    @FXML private TextField max5;
+
+    @FXML private TextField min6;
+    @FXML private TextField max6;
+
+    @FXML private TextField min7;
+    @FXML private TextField max7;
+
+    @FXML private TextField min8;
+    @FXML private TextField max8;
+
+    @FXML private TextField min9;
+    @FXML private TextField max9;
+
+    @FXML private TextField min10;
+    @FXML private TextField max10;
+
+    @FXML private TextField min11;
+    @FXML private TextField max11;
 }

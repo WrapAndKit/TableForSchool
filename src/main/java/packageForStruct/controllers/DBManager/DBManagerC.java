@@ -13,15 +13,6 @@ import java.util.ResourceBundle;
 
 public class DBManagerC implements Initializable {
 
-    @FXML private ListView<String> weeks;
-    @FXML private ListView<String> grades;
-    @FXML private ListView<String> subjects;
-    @FXML private ListView<String> teachers;
-
-    @FXML private TitledPane titledPane1;
-    @FXML private TitledPane titledPane2;
-    @FXML private TitledPane titledPane3;
-    @FXML private TitledPane titledPane4;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -42,10 +33,30 @@ public class DBManagerC implements Initializable {
         titledPane4.expandedProperty().addListener(changeListener);
     }
 
+    private void setItems(ListView<String> listView, String[] items) {
+        listView.setItems(FXCollections.observableArrayList(items));
+    }
+
+    private void setRightPane(String fileName) {
+        TitledPane titledPane = TitledPaneLoader.getTitledPane(fileName);
+        rightPane.getChildren().clear();
+        AnchorPane.setLeftAnchor(titledPane,10.0);
+        AnchorPane.setRightAnchor(titledPane, 10.0);
+        AnchorPane.setTopAnchor(titledPane, 10.0);
+        rightPane.getChildren().addAll(titledPane);
+    }
+
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                                  События                                         |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
+
     @FXML public void handleMouseClickWeeks() {
         setRightPane("WeeksAmount");
     }
-
     @FXML public void handleMouseClickGrades() {
         String selectedItem = grades.getSelectionModel().getSelectedItem();
 
@@ -54,7 +65,6 @@ public class DBManagerC implements Initializable {
             case "Нагрузка в неделю" -> setRightPane("GradesHoursPerWeek");
         }
     }
-
     @FXML public void handleMouseClickSubjects() {
         String selectedItem = subjects.getSelectionModel().getSelectedItem();
 
@@ -64,7 +74,6 @@ public class DBManagerC implements Initializable {
             case "Нагрузка в день" -> setRightPane("SubjectsHoursPerDay");
         }
     }
-
     @FXML public void handleMouseClickTeachers() {
         String selectedItem = teachers.getSelectionModel().getSelectedItem();
 
@@ -75,19 +84,23 @@ public class DBManagerC implements Initializable {
         }
     }
 
-    private void setItems(ListView<String> listView, String[] items) {
-        listView.setItems(FXCollections.observableArrayList(items));
-    }
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                            Объявляем объекты FXML                                |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
 
-    @FXML
-    private AnchorPane rightPane;
+    @FXML private AnchorPane rightPane;
 
-    private void setRightPane(String fileName) {
-        TitledPane titledPane = TitledPaneLoader.getTitledPane(fileName);
-        rightPane.getChildren().clear();
-        AnchorPane.setLeftAnchor(titledPane,10.0);
-        AnchorPane.setRightAnchor(titledPane, 10.0);
-        AnchorPane.setTopAnchor(titledPane, 10.0);
-        rightPane.getChildren().addAll(titledPane);
-    }
+    @FXML private ListView<String> weeks;
+    @FXML private ListView<String> grades;
+    @FXML private ListView<String> subjects;
+    @FXML private ListView<String> teachers;
+
+    @FXML private TitledPane titledPane1;
+    @FXML private TitledPane titledPane2;
+    @FXML private TitledPane titledPane3;
+    @FXML private TitledPane titledPane4;
 }

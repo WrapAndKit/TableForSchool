@@ -12,12 +12,6 @@ import java.util.ResourceBundle;
 
 public class SubjectsNamesC implements Initializable {
 
-    @FXML
-    private TextField newSubjectName;
-
-    @FXML
-    private ListView<String> subjects;
-
     private final SQLiteC db = new SQLiteC("C:\\Users\\Progy\\IdeaProjects\\TableForSchool\\src\\main\\sqlite\\knowledge.sqlite3");
 
     @Override
@@ -55,4 +49,16 @@ public class SubjectsNamesC implements Initializable {
         setSubjects();
         db.disconnect();
     }
+
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                            Объявляем объекты FXML                                |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
+
+    @FXML private TextField newSubjectName;
+    @FXML private ListView<String> subjects;
+
 }

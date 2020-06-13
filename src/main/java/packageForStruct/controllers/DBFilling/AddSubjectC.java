@@ -66,8 +66,6 @@ public class AddSubjectC implements Initializable{
      *                                                                                  |
      ************************************************************************************/
 
-    @FXML
-    private TextField name;
-    @FXML
-    private TextField load;
+    @FXML private TextField name;
+    @FXML private TextField load;
 }

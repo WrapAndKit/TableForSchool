@@ -11,12 +11,6 @@ import java.util.ResourceBundle;
 
 public class TeachersHoursPerWeekC implements Initializable {
 
-    @FXML
-    private TextField min;
-
-    @FXML
-    private TextField max;
-
     private final SQLiteC db = new SQLiteC("C:\\Users\\Progy\\IdeaProjects\\TableForSchool\\src\\main\\sqlite\\knowledge.sqlite3");
 
     @Override
@@ -34,4 +28,16 @@ public class TeachersHoursPerWeekC implements Initializable {
         db.updateRow("teachers_hoursPerWeek", "max", "true", max.getText());
         db.disconnect();
     }
+
+    /***********************************************************************************|
+     *                                                                                  |
+     *                                                                                  |
+     *                            Объявляем объекты FXML                                |
+     *                                                                                  |
+     *                                                                                  |
+     ************************************************************************************/
+
+    @FXML private TextField min;
+    @FXML private TextField max;
+
 }

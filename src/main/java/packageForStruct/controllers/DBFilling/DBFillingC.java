@@ -288,90 +288,51 @@ public class DBFillingC implements Initializable {
      *                                                                                  |
      ************************************************************************************/
 
-    @FXML
-    private RadioButton Radio5A;
-    @FXML
-    private RadioButton Radio5AB;
-    @FXML
-    private RadioButton Radio5ABV;
-    @FXML
-    private RadioButton Radio5ABVG;
-    @FXML
-    private RadioButton Radio5ABVGD;
+    @FXML private RadioButton Radio5A;
+    @FXML private RadioButton Radio5AB;
+    @FXML private RadioButton Radio5ABV;
+    @FXML private RadioButton Radio5ABVG;
+    @FXML private RadioButton Radio5ABVGD;
 
 
-    @FXML
-    private RadioButton Radio6A;
-    @FXML
-    private RadioButton Radio6AB;
-    @FXML
-    private RadioButton Radio6ABV;
-    @FXML
-    private RadioButton Radio6ABVG;
-    @FXML
-    private RadioButton Radio6ABVGD;
+    @FXML private RadioButton Radio6A;
+    @FXML private RadioButton Radio6AB;
+    @FXML private RadioButton Radio6ABV;
+    @FXML private RadioButton Radio6ABVG;
+    @FXML private RadioButton Radio6ABVGD;
 
-    @FXML
-    private RadioButton Radio7A;
-    @FXML
-    private RadioButton Radio7AB;
-    @FXML
-    private RadioButton Radio7ABV;
-    @FXML
-    private RadioButton Radio7ABVG;
-    @FXML
-    private RadioButton Radio7ABVGD;
+    @FXML private RadioButton Radio7A;
+    @FXML private RadioButton Radio7AB;
+    @FXML private RadioButton Radio7ABV;
+    @FXML private RadioButton Radio7ABVG;
+    @FXML private RadioButton Radio7ABVGD;
 
-    @FXML
-    private RadioButton Radio8A;
-    @FXML
-    private RadioButton Radio8AB;
-    @FXML
-    private RadioButton Radio8ABV;
-    @FXML
-    private RadioButton Radio8ABVG;
-    @FXML
-    private RadioButton Radio8ABVGD;
+    @FXML private RadioButton Radio8A;
+    @FXML private RadioButton Radio8AB;
+    @FXML private RadioButton Radio8ABV;
+    @FXML private RadioButton Radio8ABVG;
+    @FXML private RadioButton Radio8ABVGD;
 
-    @FXML
-    private RadioButton Radio9A;
-    @FXML
-    private RadioButton Radio9AB;
-    @FXML
-    private RadioButton Radio9ABV;
-    @FXML
-    private RadioButton Radio9ABVG;
-    @FXML
-    private RadioButton Radio9ABVGD;
+    @FXML private RadioButton Radio9A;
+    @FXML private RadioButton Radio9AB;
+    @FXML private RadioButton Radio9ABV;
+    @FXML private RadioButton Radio9ABVG;
+    @FXML private RadioButton Radio9ABVGD;
 
-    @FXML
-    private RadioButton Radio10A;
-    @FXML
-    private RadioButton Radio10AB;
-    @FXML
-    private RadioButton Radio10ABV;
-    @FXML
-    private RadioButton Radio10ABVG;
-    @FXML
-    private RadioButton Radio10ABVGD;
+    @FXML private RadioButton Radio10A;
+    @FXML private RadioButton Radio10AB;
+    @FXML private RadioButton Radio10ABV;
+    @FXML private RadioButton Radio10ABVG;
+    @FXML private RadioButton Radio10ABVGD;
 
-    @FXML
-    private RadioButton Radio11A;
-    @FXML
-    private RadioButton Radio11AB;
-    @FXML
-    private RadioButton Radio11ABV;
-    @FXML
-    private RadioButton Radio11ABVG;
-    @FXML
-    private RadioButton Radio11ABVGD;
+    @FXML private RadioButton Radio11A;
+    @FXML private RadioButton Radio11AB;
+    @FXML private RadioButton Radio11ABV;
+    @FXML private RadioButton Radio11ABVG;
+    @FXML private RadioButton Radio11ABVGD;
 
-    @FXML
-    private ListView<String> groupList;
-    @FXML
-    private ListView<String> subjectList;
-    @FXML
-    private TableView<Subject> tableViewSubjects;
-    @FXML
-    private TableView<Teacher> tableViewTeachers;
+    @FXML private ListView<String> groupList;
+    @FXML private ListView<String> subjectList;
+    @FXML private TableView<Subject> tableViewSubjects;
+    @FXML private TableView<Teacher> tableViewTeachers;
 }
