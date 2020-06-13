@@ -25,6 +25,7 @@ public class TeachersSubjectsC implements Initializable {
         db.connect();
         db.updateRow("teachers_subjectsAmount", "max", "true", max.getText());
         db.disconnect();
+        DBManagerC.parent.listUpdate();
     }
 
     /***********************************************************************************|

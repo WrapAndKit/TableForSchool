@@ -25,6 +25,7 @@ public class GradesAmountC implements Initializable {
         db.connect();
         db.updateRow("grades_amount", "max", "true", max.getText());
         db.disconnect();
+        DBManagerC.parent.listUpdate();
     }
 
     /***********************************************************************************|

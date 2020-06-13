@@ -7,12 +7,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
+import packageForStruct.controllers.DBFilling.DBFillingC;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DBManagerC implements Initializable {
 
+    protected static DBFillingC parent;
+
+    public void setParent(DBFillingC parent) {
+        this.parent = parent;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -26,7 +32,6 @@ public class DBManagerC implements Initializable {
                 rightPane.getChildren().clear();
             }
         };
-
         titledPane1.expandedProperty().addListener(changeListener);
         titledPane2.expandedProperty().addListener(changeListener);
         titledPane3.expandedProperty().addListener(changeListener);

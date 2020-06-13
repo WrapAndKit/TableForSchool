@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import packageForStruct.controllers.SQLiteC;
+import packageForStruct.workClasses.Subject;
+import packageForStruct.workClasses.Variables;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,20 +36,23 @@ public class SubjectsNamesC implements Initializable {
         String defaultMax = "10";
 
         db.addRow("subjects_hoursPerWeek", newSubject, defaultMin, defaultMax);
-
+        Variables.subjects.add(new Subject(newSubject));
         newSubjectName.clear();
 
         setSubjects();
 
         db.disconnect();
+        DBManagerC.parent.listUpdate();
     }
 
     public void handleRemoveButtonOnAction() {
         db.connect();
         String selectedSubject = subjects.getSelectionModel().getSelectedItem();
         db.deleteRow("subjects_hoursPerWeek", "name", selectedSubject);
+        Variables.deleteSubject(selectedSubject);
         setSubjects();
         db.disconnect();
+        DBManagerC.parent.listUpdate();
     }
 
     /***********************************************************************************|

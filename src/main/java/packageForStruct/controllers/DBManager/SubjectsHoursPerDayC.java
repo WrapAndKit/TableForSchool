@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import packageForStruct.controllers.SQLiteC;
+import packageForStruct.workClasses.Variables;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +26,7 @@ public class SubjectsHoursPerDayC implements Initializable {
         db.connect();
         db.updateRow("subjects_hoursPerDay", "max", "true", max.getText());
         db.disconnect();
+        DBManagerC.parent.listUpdate();
     }
 
     /***********************************************************************************|

@@ -27,6 +27,7 @@ public class TeachersHoursPerWeekC implements Initializable {
         db.updateRow("teachers_hoursPerWeek", "min", "true", min.getText());
         db.updateRow("teachers_hoursPerWeek", "max", "true", max.getText());
         db.disconnect();
+        DBManagerC.parent.listUpdate();
     }
 
     /***********************************************************************************|

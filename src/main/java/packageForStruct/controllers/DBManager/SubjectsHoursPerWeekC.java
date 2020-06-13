@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import packageForStruct.controllers.SQLiteC;
+import packageForStruct.workClasses.Subject;
+import packageForStruct.workClasses.Variables;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -50,6 +52,7 @@ public class SubjectsHoursPerWeekC implements Initializable {
         db.updateRow("subjects_hoursPerWeek", "min", condition, min.getText());
         db.updateRow("subjects_hoursPerWeek", "max", condition, max.getText());
         db.disconnect();
+        DBManagerC.parent.listUpdate();
     }
 
     /***********************************************************************************|

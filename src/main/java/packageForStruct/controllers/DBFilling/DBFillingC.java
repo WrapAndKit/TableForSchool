@@ -43,7 +43,7 @@ public class DBFillingC implements Initializable {
     public void selectRadio(ObservableList<Group> groups){
         for (Group group:groups) {
             switch(group.getNumber()){
-                case 5:
+                case "5":
                     switch (group.getCount()) {
                         case 1 -> Radio5A.setSelected(true);
                         case 2 -> Radio5AB.setSelected(true);
@@ -51,7 +51,7 @@ public class DBFillingC implements Initializable {
                         case 4 -> Radio5ABVG.setSelected(true);
                         case 5 -> Radio5ABVGD.setSelected(true);
                     }
-                case 6:
+                case "6":
                     switch (group.getCount()) {
                         case 1 -> Radio6A.setSelected(true);
                         case 2 -> Radio6AB.setSelected(true);
@@ -59,7 +59,7 @@ public class DBFillingC implements Initializable {
                         case 4 -> Radio6ABVG.setSelected(true);
                         case 5 -> Radio6ABVGD.setSelected(true);
                     }
-                case 7:
+                case "7":
                     switch (group.getCount()) {
                         case 1 -> Radio7A.setSelected(true);
                         case 2 -> Radio7AB.setSelected(true);
@@ -67,7 +67,7 @@ public class DBFillingC implements Initializable {
                         case 4 -> Radio7ABVG.setSelected(true);
                         case 5 -> Radio7ABVGD.setSelected(true);
                     }
-                case 8:
+                case "8":
                     switch (group.getCount()) {
                         case 1 -> Radio8A.setSelected(true);
                         case 2 -> Radio8AB.setSelected(true);
@@ -75,7 +75,7 @@ public class DBFillingC implements Initializable {
                         case 4 -> Radio8ABVG.setSelected(true);
                         case 5 -> Radio8ABVGD.setSelected(true);
                     }
-                case 9:
+                case "9":
                     switch (group.getCount()) {
                         case 1 -> Radio9A.setSelected(true);
                         case 2 -> Radio9AB.setSelected(true);
@@ -83,7 +83,7 @@ public class DBFillingC implements Initializable {
                         case 4 -> Radio9ABVG.setSelected(true);
                         case 5 -> Radio9ABVGD.setSelected(true);
                     }
-                case 10:
+                case "10":
                     switch (group.getCount()) {
                         case 1 -> Radio10A.setSelected(true);
                         case 2 -> Radio10AB.setSelected(true);
@@ -91,7 +91,7 @@ public class DBFillingC implements Initializable {
                         case 4 -> Radio10ABVG.setSelected(true);
                         case 5 -> Radio10ABVGD.setSelected(true);
                     }
-                case 11:
+                case "11":
                     switch (group.getCount()) {
                         case 1 -> Radio11A.setSelected(true);
                         case 2 -> Radio11AB.setSelected(true);
@@ -146,12 +146,12 @@ public class DBFillingC implements Initializable {
         ObservableList<ObservableList> subjects = SQLiteC.queryRows("Предметы");
         ObservableList<ObservableList> subjectsForGroup = FXCollections.observableArrayList();
         subjects.forEach(subject -> {
-            if (subject.get(0).equals(group)) subjectsForGroup.add(subject);
+            if (subject.get(0).equals(group) && Variables.listOfSubjects.contains(subject.get(1).toString())) subjectsForGroup.add(subject);
         });
         SQLiteC.disconnect();
         ObservableList<Subject> result = FXCollections.observableArrayList();
         subjectsForGroup.forEach(subject ->{
-            if(subject.get(1)!= null && subject.get(2)!= null)result.add(new Subject(subject.get(1).toString(), subject.get(2).toString()));
+            if(subject.get(1)!= null && subject.get(2)!= null)result.add(new Subject(subject.get(1).toString(), Integer.parseInt(subject.get(2).toString())));
             else result.add(new Subject());
         });
         return result;
@@ -210,8 +210,6 @@ public class DBFillingC implements Initializable {
         TableColumn<Subject, String> loadColumn = new TableColumn<>("Часы в неделю");
         loadColumn.setCellValueFactory(new PropertyValueFactory<>("load"));
 
-        takeSubjectsOfGroup(item).forEach(System.out::println);
-
         this.tableViewSubjects.setItems(takeSubjectsOfGroup(item));
         this.tableViewSubjects.getColumns().setAll(nameColumn, loadColumn);
     }
@@ -221,7 +219,7 @@ public class DBFillingC implements Initializable {
         ObservableList<Group> groups = FXCollections.observableArrayList();
         for (int i = 0; i < groupOfToggle.length; i++) {
             int count = getCountOfGroups(groupOfToggle[i].getSelectedToggle());
-            groups.add(new Group(i+5,count));
+            groups.add(new Group(""+(i+5),count));
         }
         groups.forEach(group ->
                 SQLiteC.updateRow("Классы", "КолКлассов", "Класс = "+group.getNumber(), group.getCount())
@@ -277,7 +275,7 @@ public class DBFillingC implements Initializable {
     }
     @FXML
     public void createDBManager(){
-        Main.showDBManagerWindow();
+        Main.showDBManagerWindow(this);
     }
 
     /***********************************************************************************|

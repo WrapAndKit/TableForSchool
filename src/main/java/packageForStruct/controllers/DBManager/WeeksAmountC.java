@@ -27,6 +27,7 @@ public class WeeksAmountC implements Initializable {
         db.updateRow("weeks", "min", "true", min.getText());
         db.updateRow("weeks", "max", "true", max.getText());
         db.disconnect();
+        DBManagerC.parent.listUpdate();
     }
 
     /***********************************************************************************|

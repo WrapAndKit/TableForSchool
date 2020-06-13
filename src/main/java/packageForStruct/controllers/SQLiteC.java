@@ -27,7 +27,6 @@ public class SQLiteC {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(
                     dbUrl.toString());
-            System.out.println("Connected to sqlite database!");
         }
         catch(Exception connectionError){
             System.err.println(connectionError.getMessage());

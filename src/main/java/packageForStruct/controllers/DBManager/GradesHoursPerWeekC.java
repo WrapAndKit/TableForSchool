@@ -65,6 +65,8 @@ public class GradesHoursPerWeekC implements Initializable {
         db.updateRow("grades_hoursPerWeek", "max", "name = 11", max11.getText());
 
         db.disconnect();
+
+        DBManagerC.parent.listUpdate();
     }
 
     /***********************************************************************************|

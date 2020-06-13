@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import packageForStruct.controllers.DBFilling.*;
+import packageForStruct.controllers.DBManager.DBManagerC;
 
 public class Main extends Application {
 
@@ -113,17 +114,19 @@ public class Main extends Application {
         }
     }
 
-    public static void showDBManagerWindow(){
+    public static void showDBManagerWindow(DBFillingC filCon){
         try{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/fxml/DBManager/DBManager.fxml"));
             SplitPane page = loader.load();
-            Stage addDialogStage = new Stage();
-            addDialogStage.setTitle("Редактор базы знаний");
-            addDialogStage.initModality(Modality.WINDOW_MODAL);
-            addDialogStage.initOwner(primaryStage);
-            addDialogStage.setScene(new Scene(page,800,400));
-            addDialogStage.show();
+            Stage DBManagerDialogStage = new Stage();
+            DBManagerDialogStage.setTitle("Редактор базы знаний");
+            DBManagerDialogStage.initModality(Modality.WINDOW_MODAL);
+            DBManagerDialogStage.initOwner(primaryStage);
+            DBManagerDialogStage.setScene(new Scene(page,800,400));
+            DBManagerC controller = loader.getController();
+            controller.setParent(filCon);
+            DBManagerDialogStage.show();
         }
         catch(IOException e){
             System.err.println(e.getMessage());

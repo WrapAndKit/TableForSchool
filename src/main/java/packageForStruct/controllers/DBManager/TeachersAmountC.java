@@ -27,6 +27,7 @@ public class TeachersAmountC implements Initializable {
         db.updateRow("teachers_amount", "min", "true", min.getText());
         db.updateRow("teachers_amount", "max", "true", max.getText());
         db.disconnect();
+        DBManagerC.parent.listUpdate();
     }
 
     /***********************************************************************************|
