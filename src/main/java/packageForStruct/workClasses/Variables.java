@@ -54,7 +54,7 @@ public class Variables {
         ObservableList<GroupK> groupsKn = knowledge.getGroupsKn();
 
         result.forEach(group -> groupsKn.forEach(kn ->{
-            if(kn.getName().equals(group.getNumber())) {
+            if(kn.getName().equals(group.getName())) {
                 group.setMinLoad(kn.getMinLoadWeek());
                 group.setMaxLoad(kn.getMaxLoadWeek());
             }

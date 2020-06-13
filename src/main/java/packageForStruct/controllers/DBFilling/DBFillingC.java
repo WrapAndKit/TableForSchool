@@ -42,7 +42,7 @@ public class DBFillingC implements Initializable {
      */
     public void selectRadio(ObservableList<Group> groups){
         for (Group group:groups) {
-            switch(group.getNumber()){
+            switch(group.getName()){
                 case "5":
                     switch (group.getCount()) {
                         case 1 -> Radio5A.setSelected(true);
@@ -222,7 +222,7 @@ public class DBFillingC implements Initializable {
             groups.add(new Group(""+(i+5),count));
         }
         groups.forEach(group ->
-                SQLiteC.updateRow("Классы", "КолКлассов", "Класс = "+group.getNumber(), group.getCount())
+                SQLiteC.updateRow("Классы", "КолКлассов", "Класс = "+group.getName(), group.getCount())
         );
         SQLiteC.disconnect();
     }
@@ -241,14 +241,18 @@ public class DBFillingC implements Initializable {
                 int res = (row.get(3) != null)?Integer.parseInt(row.get(3).toString()):0;
                 String name = (row.get(1) != null)?row.get(1).toString():"";
                 String load = (row.get(2) != null)?row.get(2).toString():"";
-                if(name.equals(subject.getName()) && load.equals(subject.getLoad()))
+                if(name.equals(subject.getName()) && Integer.parseInt(load) == subject.getLoad())
                    id.add(res);
             }
         });
         SQLiteC.disconnect();
         if(id.size() == 1)
         Main.showDeleteSubjectWindow(this, id.get(0));
-        else System.err.println("Ошибка поиска");
+        else
+        {
+            id.forEach(System.out::println);
+            System.err.println("Ошибка поиска");
+        }
     }
     @FXML
     public void addTeacher(){ Main.showAddTeacherWindow(subjectList.getSelectionModel().getSelectedItem(),this); }

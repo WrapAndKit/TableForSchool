@@ -19,7 +19,7 @@ public class Group {
         this.maxLoad = new SimpleIntegerProperty();
     }
 
-    public String getNumber() {
+    public String getName() {
         return name.get();
     }
 
@@ -44,7 +44,7 @@ public class Group {
     }
 
     public String toString(){
-        return "There are " + getCount() + " of " + getNumber() + " groups.";
+        return "There are " + getCount() + " of " + getName() + " groups.";
     }
 }
 

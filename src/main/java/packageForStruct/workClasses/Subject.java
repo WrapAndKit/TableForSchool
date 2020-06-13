@@ -83,6 +83,10 @@ public class Subject {
         this.maxLoadDay.set(maxLoadDay);
     }
 
+    public String getGroupName() {
+        return groupName.get();
+    }
+
     public String toString(){
         return "Name: " + name.getValue() + ", load: " + load.getValue();
     }
