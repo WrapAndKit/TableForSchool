@@ -1,4 +1,4 @@
-package packageForStruct.controllers;
+package packageForStruct.controllers.DBFilling;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import packageForStruct.Main;
+import packageForStruct.controllers.SQLiteC;
 import packageForStruct.workClasses.Subject;
 import packageForStruct.workClasses.Group;
 import packageForStruct.workClasses.Teacher;
@@ -17,14 +18,14 @@ import java.util.ResourceBundle;
 
 public class DBFillingC implements Initializable {
 
-    private ToggleGroup[] groupOfToggle = new ToggleGroup[7];
-    private SQLiteC SQLiteC = new SQLiteC();
-    private Variables variables = new Variables();
+    private final ToggleGroup[] groupOfToggle = new ToggleGroup[7];
+    private final SQLiteC SQLiteC = new SQLiteC();
+    private final Variables variables = new Variables();
 
     public void initialize(URL location, ResourceBundle resources){
         listUpdate();
         toggleRadio();
-        selectRadio(variables.groups);
+        selectRadio(Variables.groups);
     }
 
     /**
@@ -32,142 +33,71 @@ public class DBFillingC implements Initializable {
      */
     public void listUpdate(){
         variables.update();
-        this.groupList.setItems(variables.listOfGroups);
-        this.subjectList.setItems(variables.listOfSubjects);
+        this.groupList.setItems(Variables.listOfGroups);
+        this.subjectList.setItems(Variables.listOfSubjects);
     }
 
     /**
      * Метод, который на основе базы данных выбирает RadioButton
-     * @param groups
      */
     public void selectRadio(ObservableList<Group> groups){
         for (Group group:groups) {
             switch(group.getNumber()){
                 case 5:
-                    switch(group.getCount()){
-                        case 1:
-                            Radio5A.setSelected(true);
-                            break;
-                        case 2:
-                            Radio5AB.setSelected(true);
-                            break;
-                        case 3:
-                            Radio5ABV.setSelected(true);
-                            break;
-                        case 4:
-                            Radio5ABVG.setSelected(true);
-                            break;
-                        case 5:
-                            Radio5ABVGD.setSelected(true);
-                            break;
+                    switch (group.getCount()) {
+                        case 1 -> Radio5A.setSelected(true);
+                        case 2 -> Radio5AB.setSelected(true);
+                        case 3 -> Radio5ABV.setSelected(true);
+                        case 4 -> Radio5ABVG.setSelected(true);
+                        case 5 -> Radio5ABVGD.setSelected(true);
                     }
                 case 6:
-                    switch(group.getCount()){
-                        case 1:
-                            Radio6A.setSelected(true);
-                            break;
-                        case 2:
-                            Radio6AB.setSelected(true);
-                            break;
-                        case 3:
-                            Radio6ABV.setSelected(true);
-                            break;
-                        case 4:
-                            Radio6ABVG.setSelected(true);
-                            break;
-                        case 5:
-                            Radio6ABVGD.setSelected(true);
-                            break;
+                    switch (group.getCount()) {
+                        case 1 -> Radio6A.setSelected(true);
+                        case 2 -> Radio6AB.setSelected(true);
+                        case 3 -> Radio6ABV.setSelected(true);
+                        case 4 -> Radio6ABVG.setSelected(true);
+                        case 5 -> Radio6ABVGD.setSelected(true);
                     }
                 case 7:
-                    switch(group.getCount()){
-                        case 1:
-                            Radio7A.setSelected(true);
-                            break;
-                        case 2:
-                            Radio7AB.setSelected(true);
-                            break;
-                        case 3:
-                            Radio7ABV.setSelected(true);
-                            break;
-                        case 4:
-                            Radio7ABVG.setSelected(true);
-                            break;
-                        case 5:
-                            Radio7ABVGD.setSelected(true);
-                            break;
+                    switch (group.getCount()) {
+                        case 1 -> Radio7A.setSelected(true);
+                        case 2 -> Radio7AB.setSelected(true);
+                        case 3 -> Radio7ABV.setSelected(true);
+                        case 4 -> Radio7ABVG.setSelected(true);
+                        case 5 -> Radio7ABVGD.setSelected(true);
                     }
                 case 8:
-                    switch(group.getCount()){
-                        case 1:
-                            Radio8A.setSelected(true);
-                            break;
-                        case 2:
-                            Radio8AB.setSelected(true);
-                            break;
-                        case 3:
-                            Radio8ABV.setSelected(true);
-                            break;
-                        case 4:
-                            Radio8ABVG.setSelected(true);
-                            break;
-                        case 5:
-                            Radio8ABVGD.setSelected(true);
-                            break;
+                    switch (group.getCount()) {
+                        case 1 -> Radio8A.setSelected(true);
+                        case 2 -> Radio8AB.setSelected(true);
+                        case 3 -> Radio8ABV.setSelected(true);
+                        case 4 -> Radio8ABVG.setSelected(true);
+                        case 5 -> Radio8ABVGD.setSelected(true);
                     }
                 case 9:
-                    switch(group.getCount()){
-                        case 1:
-                            Radio9A.setSelected(true);
-                            break;
-                        case 2:
-                            Radio9AB.setSelected(true);
-                            break;
-                        case 3:
-                            Radio9ABV.setSelected(true);
-                            break;
-                        case 4:
-                            Radio9ABVG.setSelected(true);
-                            break;
-                        case 5:
-                            Radio9ABVGD.setSelected(true);
-                            break;
+                    switch (group.getCount()) {
+                        case 1 -> Radio9A.setSelected(true);
+                        case 2 -> Radio9AB.setSelected(true);
+                        case 3 -> Radio9ABV.setSelected(true);
+                        case 4 -> Radio9ABVG.setSelected(true);
+                        case 5 -> Radio9ABVGD.setSelected(true);
                     }
                 case 10:
-                    switch(group.getCount()){
-                        case 1:
-                            Radio10A.setSelected(true);
-                            break;
-                        case 2:
-                            Radio10AB.setSelected(true);
-                            break;
-                        case 3:
-                            Radio10ABV.setSelected(true);
-                            break;
-                        case 4:
-                            Radio10ABVG.setSelected(true);
-                            break;
-                        case 5:
-                            Radio10ABVGD.setSelected(true);
-                            break;
+                    switch (group.getCount()) {
+                        case 1 -> Radio10A.setSelected(true);
+                        case 2 -> Radio10AB.setSelected(true);
+                        case 3 -> Radio10ABV.setSelected(true);
+                        case 4 -> Radio10ABVG.setSelected(true);
+                        case 5 -> Radio10ABVGD.setSelected(true);
                     }
                 case 11:
-                    switch(group.getCount()){
-                        case 1:
-                            Radio11A.setSelected(true);
-                            break;
-                        case 2:
-                            Radio11AB.setSelected(true);
-                            break;
-                        case 3:
-                            Radio11ABV.setSelected(true);
-                            break;
-                        case 4:
-                            Radio11ABVG.setSelected(true);
-                            break;
-                        case 5:
-                            Radio11ABVGD.setSelected(true);
-                            break;
+                    switch (group.getCount()) {
+                        case 1 -> Radio11A.setSelected(true);
+                        case 2 -> Radio11AB.setSelected(true);
+                        case 3 -> Radio11ABV.setSelected(true);
+                        case 4 -> Radio11ABVG.setSelected(true);
+                        case 5 -> Radio11ABVGD.setSelected(true);
                     }
             }
         }
@@ -175,9 +105,6 @@ public class DBFillingC implements Initializable {
 
     /**
      * Метод, который связывает RadioButton в одну группу
-     *
-     * @param objects
-     * @return
      */
     public ToggleGroup setToggleGroup(RadioButton ... objects){
         ToggleGroup group = new ToggleGroup();
@@ -202,22 +129,17 @@ public class DBFillingC implements Initializable {
 
     /**
      * Метод, возвращающий число выбранных пользователем классов
-     * @param toggle
-     * @return
      */
     public int getCountOfGroups(Toggle toggle){
         String str = toggle.toString();
         int indexOfId = str.indexOf("id=");
         int indexOfA = str.indexOf("A", indexOfId);
         int indexOfNext = str.indexOf(",",indexOfId);
-        int count = indexOfNext - indexOfA;
-        return count;
+        return indexOfNext - indexOfA;
     }
 
     /**
      * Метод, возвращающий предметы для заданной группы
-     * @param group
-     * @return
      */
     public ObservableList<Subject> takeSubjectsOfGroup(Object group){
         SQLiteC.connect();
@@ -237,8 +159,6 @@ public class DBFillingC implements Initializable {
 
     /**
      * Метод, возвращающий преподавателей для предмета
-     * @param subject
-     * @return
      */
     public ObservableList<Teacher> takeTeachersOfSubject(Object subject){
         SQLiteC.connect();
@@ -355,6 +275,10 @@ public class DBFillingC implements Initializable {
             Main.showDeleteTeacherWindow(this, id.get(0));
         else System.err.println("Ошибка поиска");
     }
+    @FXML
+    public void createDBManager(){
+        Main.showDBManagerWindow();
+    }
 
     /***********************************************************************************|
      *                                                                                  |
@@ -443,9 +367,9 @@ public class DBFillingC implements Initializable {
     private RadioButton Radio11ABVGD;
 
     @FXML
-    private ListView groupList;
+    private ListView<String> groupList;
     @FXML
-    private ListView subjectList;
+    private ListView<String> subjectList;
     @FXML
     private TableView<Subject> tableViewSubjects;
     @FXML

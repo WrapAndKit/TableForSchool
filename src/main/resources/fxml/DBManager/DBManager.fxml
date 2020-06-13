@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.3" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="packageForStruct.controllers.DBManager.DBManagerC">
+    <AnchorPane>
+        <Accordion maxHeight="-Infinity" prefHeight="195.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <panes>
+                <TitledPane fx:id="titledPane1" animated="false" text="Четверть">
+                    <ListView fx:id="weeks" onMouseClicked="#handleMouseClickWeeks" />
+                </TitledPane>
+                <TitledPane fx:id="titledPane2" animated="false" text="Классы">
+                    <ListView fx:id="grades" onMouseClicked="#handleMouseClickGrades" />
+                </TitledPane>
+                <TitledPane fx:id="titledPane3" animated="false" text="Предметы">
+                    <ListView fx:id="subjects" onMouseClicked="#handleMouseClickSubjects" />
+                </TitledPane>
+                <TitledPane fx:id="titledPane4" animated="false" text="Преподаватели">
+                    <ListView fx:id="teachers" onMouseClicked="#handleMouseClickTeachers" />
+                </TitledPane>
+            </panes>
+            <padding>
+                <Insets left="5.0" right="5.0" top="10.0" />
+            </padding>
+        </Accordion>
+    </AnchorPane>
+    <AnchorPane fx:id="rightPane" SplitPane.resizableWithParent="false">
+    </AnchorPane>
+</SplitPane>

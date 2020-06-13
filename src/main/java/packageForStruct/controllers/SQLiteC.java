@@ -12,16 +12,22 @@ import java.util.Map;
 public class SQLiteC {
 
     private Connection connection;
+    private String dataBaseUrl;
+
+    public SQLiteC() { dataBaseUrl = "C:\\Users\\Progy\\IdeaProjects\\TableForSchool\\src\\main\\sqlite\\dbForSchool.db"; }
+    public SQLiteC(String dbFileName){
+        dataBaseUrl = dbFileName;
+    }
 
     public void connect(){
         Connection connection = null;
-        String dataBaseUrl = "C:\\Users\\Progy\\IdeaProjects\\TableForSchool\\src\\main\\sqlite\\dbForSchool.db";
         StringBuilder dbUrl = new StringBuilder("jdbc:sqlite:");
         dbUrl.append(dataBaseUrl);
         try{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(
                     dbUrl.toString());
+            System.out.println("Connected to sqlite database!");
         }
         catch(Exception connectionError){
             System.err.println(connectionError.getMessage());
@@ -64,6 +70,11 @@ public class SQLiteC {
         return columns;
     }
 
+    public ObservableList<String> queryFirstRaw(String tableName) {
+        ObservableList<ObservableList> rows = queryRows(tableName);
+        return (ObservableList<String>) rows.get(0);
+    }
+
     public ObservableList<ObservableList> queryRows(String tableName){
         String statement = "SELECT * " +
                 "FROM " + tableName;
@@ -83,6 +94,24 @@ public class SQLiteC {
             System.err.println(rowQueryException.toString());
         }
         return rows;
+    }
+
+    public ObservableList<String> queryRow(String tableName, String condition) {
+        String statement = "SELECT * " +
+                "FROM " + tableName +
+                " WHERE " + condition;
+        ObservableList<String> row = FXCollections.observableArrayList();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
+                row.add(resultSet.getString(i));
+            }
+            resultSet.close();
+        }
+        catch (SQLException exception) {
+            System.err.println(exception.toString());
+        }
+        return row;
     }
 
     public void deleteRow(String tableName, String param, Object value){

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="200.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="packageForStruct.controllers.DeleteSubjectC">
+<AnchorPane prefHeight="200.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="packageForStruct.controllers.DBFilling.DeleteSubjectC">
    <children>
       <Button layoutX="14.0" layoutY="149.0" mnemonicParsing="false" onAction="#delete" prefHeight="37.0" prefWidth="95.0" text="Удалить" />
       <Button layoutX="397.0" layoutY="149.0" mnemonicParsing="false" onAction="#cancel" prefHeight="37.0" prefWidth="95.0" text="Отмена" />

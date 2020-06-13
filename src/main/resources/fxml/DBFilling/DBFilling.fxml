@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="packageForStruct.controllers.DBFilling.DBFillingC">
+    <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+        <BorderPane prefHeight="200.0" prefWidth="200.0">
+            <left>
+                <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                    <Tab text="Количество классов">
+                        <SplitPane dividerPositions="0.5, 0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                            <Label text="Выберите количество классов:" textAlignment="CENTER">
+                                <font>
+                                    <Font size="14.0" />
+                                </font>
+                            </Label>
+                            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                                <Tab text="5 классы:">
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                        <RadioButton fx:id="Radio5A" layoutX="40.0" layoutY="70.0" mnemonicParsing="false" text="Существует только класс А" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="70.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio5AB" layoutX="40.0" layoutY="100.0" mnemonicParsing="false" text="Существуют класс А и Б" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio5ABV" layoutX="40.0" layoutY="130.0" mnemonicParsing="false" text="Существуют классы: А, Б, В" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="130.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio5ABVG" layoutX="40.0" layoutY="160.0" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio5ABVGD" layoutX="40.0" layoutY="190.0" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г, Д" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="190.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                    </AnchorPane>
+                                </Tab>
+                                <Tab text="6 классы:">
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                        <RadioButton fx:id="Radio6A" mnemonicParsing="false" text="Существует только класс А" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="70.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio6AB" mnemonicParsing="false" text="Существуют класс А и Б" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio6ABV" mnemonicParsing="false" text="Существуют классы: А, Б, В" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="130.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio6ABVG" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio6ABVGD" layoutY="53.0" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г, Д" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="190.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                    </AnchorPane>
+                                </Tab>
+                                <Tab text="7 классы:">
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                        <RadioButton fx:id="Radio7A" mnemonicParsing="false" text="Существует только класс А" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="70.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio7AB" mnemonicParsing="false" text="Существуют класс А и Б" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio7ABV" mnemonicParsing="false" text="Существуют классы: А, Б, В" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="130.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio7ABVG" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio7ABVGD" layoutY="53.0" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г, Д" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="190.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                    </AnchorPane>
+                                </Tab>
+                                <Tab text="8 классы:">
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                        <RadioButton fx:id="Radio8A" mnemonicParsing="false" text="Существует только класс А" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="70.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio8AB" mnemonicParsing="false" text="Существуют класс А и Б" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio8ABV" mnemonicParsing="false" text="Существуют классы: А, Б, В" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="130.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio8ABVG" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio8ABVGD" layoutY="53.0" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г, Д" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="190.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                    </AnchorPane>
+                                </Tab>
+                                <Tab text="9 классы:">
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                        <RadioButton fx:id="Radio9A" mnemonicParsing="false" text="Существует только класс А" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="70.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio9AB" mnemonicParsing="false" text="Существуют класс А и Б" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio9ABV" mnemonicParsing="false" text="Существуют классы: А, Б, В" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="130.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio9ABVG" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio9ABVGD" layoutY="53.0" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г, Д" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="190.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                    </AnchorPane>
+                                </Tab>
+                                <Tab text="10 классы:">
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                        <RadioButton fx:id="Radio10A" mnemonicParsing="false" text="Существует только класс А" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="70.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio10AB" mnemonicParsing="false" text="Существуют класс А и Б" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio10ABV" mnemonicParsing="false" text="Существуют классы: А, Б, В" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="130.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio10ABVG" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio10ABVGD" layoutY="53.0" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г, Д" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="190.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                    </AnchorPane>
+                                </Tab>
+                                <Tab text="11 классы:">
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                        <RadioButton fx:id="Radio11A" mnemonicParsing="false" text="Существует только класс А" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="70.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio11AB" mnemonicParsing="false" text="Существуют класс А и Б" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="100.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio11ABV" mnemonicParsing="false" text="Существуют классы: А, Б, В" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="130.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio11ABVG" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                        <RadioButton fx:id="Radio11ABVGD" layoutY="53.0" mnemonicParsing="false" text="Существуют классы: А, Б, В, Г, Д" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="190.0">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </RadioButton>
+                                    </AnchorPane>
+                                </Tab>
+                            </TabPane>
+                            <Button mnemonicParsing="false" onAction="#saveCountOfGroups" prefHeight="40.0" prefWidth="150.0" text="Сохранить" />
+                        </SplitPane>
+                    </Tab>
+
+                    <Tab text="Предметы для классов">
+                        <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+                            <SplitPane dividerPositions="0.06304728546409807" maxWidth="-Infinity" orientation="VERTICAL" prefHeight="571.0" prefWidth="200.0">
+                                <Label text="Классы:">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <ListView fx:id="groupList" onKeyPressed="#updateTVFromGroup" onMouseClicked="#updateTVFromGroup" prefHeight="200.0" prefWidth="200.0" />
+                            </SplitPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                <TableView fx:id="tableViewSubjects" focusTraversable="false" prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                                    <columns>
+                                        <TableColumn prefWidth="100.0" text="Предметы:" />
+                                        <TableColumn prefWidth="75.0" text="Часы в неделю:" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                                <Button layoutY="531.0" mnemonicParsing="false" onAction="#addSubject" prefHeight="40.0" prefWidth="150.0" text="Добавить предмет" />
+                                <Button layoutX="444.0" layoutY="531.0" mnemonicParsing="false" onAction="#deleteSubject" prefHeight="40.0" prefWidth="150.0" text="Удалить предмет" />
+                            </AnchorPane>
+                        </SplitPane>
+                    </Tab>
+
+                    <Tab text="Преподаватели">
+                        <SplitPane dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0">
+                            <SplitPane dividerPositions="0.06304728546409807" maxWidth="-Infinity" orientation="VERTICAL" prefHeight="571.0" prefWidth="200.0">
+                                <Label text="Предметы:">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <ListView fx:id="subjectList" onKeyPressed="#updateTVFromSubject" onMouseClicked="#updateTVFromSubject" prefHeight="200.0" prefWidth="200.0" />
+                            </SplitPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                <TableView fx:id="tableViewTeachers" focusTraversable="false" prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                                    <columns>
+                                        <TableColumn prefWidth="100.0" text="ФИО преподавателя:" />
+                                        <TableColumn prefWidth="75.0" text="Часы в неделю:" />
+                                        <TableColumn prefWidth="75.0" text="Аудитория:" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                                <Button layoutY="531.0" mnemonicParsing="false" onAction="#addTeacher" prefHeight="40.0" text="Добавить преподавателя">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Button>
+                                <Button layoutX="422.0" layoutY="531.0" mnemonicParsing="false" onAction="#deleteTeacher" prefHeight="40.0" text="Удалить преподавателя">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Button>
+                            </AnchorPane>
+                        </SplitPane>
+                    </Tab>
+
+                </TabPane>
+            </left>
+        </BorderPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+            <Button mnemonicParsing="false" onAction="#createDBManager" prefWidth="150.0" text="Редактор базы знаний" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="650.0" AnchorPane.topAnchor="0.0" />
+            <Button mnemonicParsing="false" prefWidth="150.0" text="Перейти к расписанию" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        </AnchorPane>
+    </SplitPane>
+</StackPane>
