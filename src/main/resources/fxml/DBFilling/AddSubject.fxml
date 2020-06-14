@@ -16,18 +16,18 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label prefHeight="48.0" prefWidth="216.0" text="Введите название предмета">
+                <Label prefHeight="48.0" prefWidth="216.0" text="Выберите название предмета">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <TextField fx:id="name" prefHeight="36.0" prefWidth="173.0" GridPane.columnIndex="1" />
             <Label text="Введите кол-во часов в неделю" GridPane.rowIndex="1">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <TextField fx:id="load" prefHeight="36.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ChoiceBox fx:id="subjects" prefHeight="36.0" prefWidth="250.0" GridPane.columnIndex="1" />
             </children>
         </GridPane>
         <Button layoutX="222.0" layoutY="149.0" mnemonicParsing="false" onAction="#ok" prefHeight="37.0" prefWidth="95.0" text="Сохранить" />

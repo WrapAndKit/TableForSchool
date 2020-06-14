@@ -3,6 +3,7 @@ package packageForStruct.controllers.DBFilling;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import packageForStruct.Knowledge.Knowledge;
@@ -19,6 +20,19 @@ public class AddSubjectC implements Initializable{
     private Stage addDialogStage;
     private Object selectedItem;
     private DBFillingC parent;
+    private final SQLiteC db = new SQLiteC("C:\\Users\\Progy\\IdeaProjects\\TableForSchool\\src\\main\\sqlite\\knowledge.sqlite3");
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        db.connect();
+        ObservableList subjectsNames = db.queryColumnValue("subjects_hoursPerWeek", "name");
+        subjects.setItems(subjectsNames);
+
+        if (!subjectsNames.isEmpty()) {
+            subjects.setValue((String) subjectsNames.get(0));
+        }
+        db.disconnect();
+    }
 
     public void setParent(DBFillingC parent) {
         this.parent = parent;
@@ -30,8 +44,7 @@ public class AddSubjectC implements Initializable{
         this.addDialogStage = addDialogStage;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {}
+
 
     /***********************************************************************************|
      *                                                                                  |
@@ -41,25 +54,28 @@ public class AddSubjectC implements Initializable{
      *                                                                                  |
      ************************************************************************************/
 
+    //Убрать ненужные условия
+
     @FXML
     private void ok(){
         SQLiteC SQLiteC = new SQLiteC();
         SQLiteC.connect();
+        String name = subjects.getSelectionModel().getSelectedItem();
         ObservableList ids = SQLiteC.queryColumnValue("Предметы", "id");
         ids.sort((o1, o2) -> Math.max(Integer.parseInt(o1.toString()), Integer.parseInt(o2.toString())));
         int loadForGroup = Variables.subjects.stream().filter(subject -> subject.getGroupName().equals(selectedItem)).mapToInt(Subject::getLoad).sum();
         if(name != null && load != null)
-            if(Variables.listOfSubjects.contains(name.getText()))
+            if(Variables.listOfSubjects.contains(name))
                 Variables.groups.forEach(group ->{
                     if(group.getName().equals(selectedItem))
                         if(group.getMaxLoad() >= (loadForGroup+Integer.parseInt(load.getText())))
                         {
                             ObservableList<SubjectK> subjects = Knowledge.getSubjectsKn();
                             subjects.forEach(sub -> {
-                                if(sub.getName().equals(name.getText())) {
+                                if(sub.getName().equals(name)) {
                                     if ((sub.getMinLoadWeek() <= Integer.parseInt(load.getText()))
                                             && (sub.getMaxLoadWeek() >= Integer.parseInt(load.getText()))) {
-                                        SQLiteC.addRow("Предметы", selectedItem, name.getText(),
+                                        SQLiteC.addRow("Предметы", selectedItem, name,
                                                 load.getText(), Integer.parseInt(ids.get(0).toString()) + 1);
                                         SQLiteC.disconnect();
                                         addDialogStage.close();
@@ -86,6 +102,7 @@ public class AddSubjectC implements Initializable{
      *                                                                                  |
      ************************************************************************************/
 
-    @FXML private TextField name;
     @FXML private TextField load;
+    @FXML private ChoiceBox<String> subjects;
+
 }
