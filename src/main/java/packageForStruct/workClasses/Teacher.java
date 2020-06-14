@@ -14,28 +14,41 @@ public class Teacher {
     private IntegerProperty maxLoadWeek;
     private static IntegerProperty minCount;
     private static IntegerProperty maxCount;
+    private StringProperty subject;
+    private Integer busy;
+
+    public Integer getBusy() {
+        return busy;
+    }
+
+    public void setBusy(Integer busy) {
+        this.busy = busy;
+    }
 
     private static int count = 0;
 
-    public Teacher(String name, String load, String classroom) {
+    public Teacher(String name, String load, String classroom, String subject) {
         this.name = new SimpleStringProperty(name);
         this.load = new SimpleStringProperty(load);
         this.classroom = new SimpleStringProperty(classroom);
+        this.subject = new SimpleStringProperty(subject);
         this.minLoadWeek = new SimpleIntegerProperty();
         this.maxLoadWeek = new SimpleIntegerProperty();
         this.minCount = new SimpleIntegerProperty();
         this.maxCount = new SimpleIntegerProperty();
+        this.busy = 0;
         this.count++;
     }
 
     public Teacher(){
-        this.name = new SimpleStringProperty();
+        this.name = new SimpleStringProperty("");
         this.load = new SimpleStringProperty();
         this.classroom = new SimpleStringProperty();
         this.minLoadWeek = new SimpleIntegerProperty();
         this.maxLoadWeek = new SimpleIntegerProperty();
         this.minCount = new SimpleIntegerProperty();
         this.maxCount = new SimpleIntegerProperty();
+        this.busy = 0;
         this.count++;
     }
 
@@ -85,6 +98,14 @@ public class Teacher {
 
     public static int getCount() {
         return count;
+    }
+
+    public String getSubject() {
+        return subject.get();
+    }
+
+    public void setSubject(String subject) {
+        this.subject.set(subject);
     }
 
     protected void finalize() throws Throwable{

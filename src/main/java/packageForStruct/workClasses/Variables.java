@@ -92,7 +92,7 @@ public class Variables {
         ObservableList<ObservableList> teacherRows = controllerDB.queryRows("Преподаватели");
         controllerDB.disconnect();
 
-        teacherRows.forEach(row -> result.add(new Teacher(row.get(1).toString(),row.get(4).toString(), row.get(3).toString())));
+        teacherRows.forEach(row -> result.add(new Teacher(row.get(1).toString(),row.get(4).toString(), row.get(3).toString(), row.get(2).toString())));
 
         result.forEach(teacher -> {
             teacher.setMinLoadWeek(knowledge.getMinLoadTeacher());

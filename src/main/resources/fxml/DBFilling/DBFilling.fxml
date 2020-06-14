@@ -291,7 +291,7 @@
         </BorderPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
             <Button mnemonicParsing="false" onAction="#createDBManager" prefWidth="150.0" text="Редактор базы знаний" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="650.0" AnchorPane.topAnchor="0.0" />
-            <Button mnemonicParsing="false" prefWidth="150.0" text="Перейти к расписанию" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Button mnemonicParsing="false" onAction="#tableOfLessons" prefWidth="150.0" text="Перейти к расписанию" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         </AnchorPane>
     </SplitPane>
 </StackPane>

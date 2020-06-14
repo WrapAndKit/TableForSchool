@@ -8,10 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import packageForStruct.Main;
 import packageForStruct.controllers.SQLiteC;
-import packageForStruct.workClasses.Subject;
-import packageForStruct.workClasses.Group;
-import packageForStruct.workClasses.Teacher;
-import packageForStruct.workClasses.Variables;
+import packageForStruct.workClasses.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -171,7 +168,7 @@ public class DBFillingC implements Initializable {
         ObservableList<Teacher> result = FXCollections.observableArrayList();
         teachersForSubject.forEach(teacher ->{
             if(teacher.get(1) != null && teacher.get(3) != null && teacher.get(4) != null)
-                result.add(new Teacher(teacher.get(1).toString(),teacher.get(4).toString(), teacher.get(3).toString()));
+                result.add(new Teacher(teacher.get(1).toString(),teacher.get(4).toString(), teacher.get(3).toString(), teacher.get(2).toString()));
             else result.add(new Teacher());
         });
         return result;
@@ -246,13 +243,7 @@ public class DBFillingC implements Initializable {
             }
         });
         SQLiteC.disconnect();
-        if(id.size() == 1)
         Main.showDeleteSubjectWindow(this, id.get(0));
-        else
-        {
-            id.forEach(System.out::println);
-            System.err.println("Ошибка поиска");
-        }
     }
     @FXML
     public void addTeacher(){ Main.showAddTeacherWindow(subjectList.getSelectionModel().getSelectedItem(),this); }
@@ -273,13 +264,23 @@ public class DBFillingC implements Initializable {
             }
         });
         SQLiteC.disconnect();
-        if(id.size() == 1)
-            Main.showDeleteTeacherWindow(this, id.get(0));
-        else System.err.println("Ошибка поиска");
+        Main.showDeleteTeacherWindow(this, id.get(0));
     }
     @FXML
     public void createDBManager(){
         Main.showDBManagerWindow(this);
+    }
+
+    @FXML
+    public void tableOfLessons(){
+        Week week = new Week("10-0");
+        System.out.println(week.days[0]);
+        System.out.println(week.days[1]);
+        System.out.println(week.days[2]);
+        System.out.println(week.days[3]);
+        System.out.println(week.days[4]);
+        System.out.println(week.days[5]);
+        listUpdate();
     }
 
     /***********************************************************************************|
