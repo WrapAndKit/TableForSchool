@@ -9,6 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import packageForStruct.Main;
 import packageForStruct.controllers.SQLiteC;
 import packageForStruct.workClasses.*;
+import packageForStruct.workClasses.Designing.Schedule;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -274,7 +275,6 @@ public class DBFillingC implements Initializable {
     @FXML
     public void tableOfLessons(){
         Schedule schedule = new Schedule();
-        schedule.soutSchedule();
         listUpdate();
     }
 
