@@ -273,13 +273,8 @@ public class DBFillingC implements Initializable {
 
     @FXML
     public void tableOfLessons(){
-        Week week = new Week("10-0");
-        System.out.println(week.days[0]);
-        System.out.println(week.days[1]);
-        System.out.println(week.days[2]);
-        System.out.println(week.days[3]);
-        System.out.println(week.days[4]);
-        System.out.println(week.days[5]);
+        Schedule schedule = new Schedule();
+        schedule.soutSchedule();
         listUpdate();
     }
 

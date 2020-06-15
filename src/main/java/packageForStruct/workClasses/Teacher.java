@@ -52,6 +52,20 @@ public class Teacher {
         this.count++;
     }
 
+    public Teacher(Teacher teacher){
+        this.name = new SimpleStringProperty(teacher.getName());
+        this.load = new SimpleStringProperty(teacher.getLoad());
+        this.classroom = new SimpleStringProperty(teacher.getClassroom());
+        this.minLoadWeek = new SimpleIntegerProperty(teacher.getMinLoadWeek());
+        this.maxLoadWeek = new SimpleIntegerProperty(teacher.getMaxLoadWeek());
+        this.minCount = new SimpleIntegerProperty(teacher.getMinCount());
+        this.maxCount = new SimpleIntegerProperty(teacher.getMaxCount());
+        this.busy = teacher.getBusy();
+        this.subject = new SimpleStringProperty(teacher.getSubject());
+        this.count++;
+    }
+
+
     public String toString(){
         return "Teacher's name is " + name.getValue() + " he/she has " + load.getValue() + " hours load in " + classroom.getValue() + " classroom!";
     }

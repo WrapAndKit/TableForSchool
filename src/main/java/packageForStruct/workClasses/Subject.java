@@ -47,6 +47,15 @@ public class Subject {
         this.groupName = new SimpleStringProperty();
     }
 
+    public Subject(Subject subject){
+        this.name = new SimpleStringProperty(subject.getName());
+        this.minLoadWeek = new SimpleIntegerProperty(subject.getMinLoadWeek());
+        this.maxLoadWeek = new SimpleIntegerProperty(subject.getMaxLoadWeek());
+        this.load = new SimpleIntegerProperty(subject.getLoad());
+        this.maxLoadDay = new SimpleIntegerProperty(subject.getMaxLoadDay());
+        this.groupName = new SimpleStringProperty(subject.getGroupName());
+    }
+
     public Subject(){
         this.name = new SimpleStringProperty();
         this.load = new SimpleIntegerProperty();
@@ -85,6 +94,10 @@ public class Subject {
 
     public String getGroupName() {
         return groupName.get();
+    }
+
+    public void setLoad(int load) {
+        this.load.set(load);
     }
 
     public String toString(){

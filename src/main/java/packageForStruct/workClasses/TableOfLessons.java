@@ -29,7 +29,7 @@ public class TableOfLessons {
                 //Перебираем предметы и находим для них преподавателя
                 subjects.forEach(subject -> {
                     //
-                    lessons.add(new Lesson(groupName,subject));
+                    lessons.add(new Lesson(groupName,new Subject(subject)));
                     //Назначен ли преподаватель предмету
                     AtomicBoolean isTeacher = new AtomicBoolean(false);
                     //Все преподаватели для предмета
@@ -44,7 +44,7 @@ public class TableOfLessons {
                                 teacher.setBusy(teacher.getBusy()+subject.getLoad());
                                 if(teacher.getBusy().equals(Integer.parseInt(teacher.getLoad())))
                                     busyTeachers.add(teacher);
-                                lessons.get(lessons.size()-1).setTeacher(teacher);
+                                lessons.get(lessons.size()-1).setTeacher(new Teacher(teacher));
                             }
                         }
                     });
@@ -62,11 +62,11 @@ public class TableOfLessons {
                             if(load.get() >= teacherTime){
                                 load.updateAndGet(v -> v - (Integer.parseInt(teacher.getLoad()) - teacher.getBusy()));
                                 teacher.setBusy(teacher.getBusy()+teacherTime);
-                                lesson.setTeacher(teacher);
+                                lesson.setTeacher(new Teacher(teacher));
                                 busyTeachers.add(teacher);
                             }else{
                                 teacher.setBusy(teacher.getBusy()+load.get());
-                                lesson.setTeacher(teacher);
+                                lesson.setTeacher(new Teacher(teacher));
                                 load.set(0);
                             }
                         }

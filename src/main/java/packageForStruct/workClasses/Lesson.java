@@ -45,6 +45,11 @@ public class Lesson {
         this.teacher.add(teacher);
     }
 
+    private void setNewTeacher(Teacher teacher){
+        this.teacher = FXCollections.observableArrayList();
+        this.teacher.add(teacher);
+    }
+
     public String getClassroom() {
         return classroom.get();
     }
@@ -67,6 +72,12 @@ public class Lesson {
 
     public String getGroup() {
         return group.get();
+    }
+
+    public Lesson returnLessonWithTeacher(Teacher teacher){
+        Lesson newLesson = this;
+        newLesson.setNewTeacher(teacher);
+        return newLesson;
     }
 
     public String toString(){

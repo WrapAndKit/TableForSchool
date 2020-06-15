@@ -6,9 +6,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Day {
+
     private StringProperty name;
     private ObservableList<Lesson> lessons = FXCollections.observableArrayList();
-
 
     public Day(String group, String name){
         this.name = new SimpleStringProperty(name);
@@ -20,6 +20,7 @@ public class Day {
 
     public void addLessons(Lesson lesson){
         this.lessons.add(lesson);
+        lesson.getTeacher().forEach(teacher -> {});
     }
 
     public String getName() {
